@@ -34,10 +34,10 @@ export default class Drivers extends React.Component {
                     <tbody>
                     {this.state.drivers.map(item=>{
                             return(
-                                <tr>
+                                <tr key={item.position}>
                                 <td>{item.position}</td>
                                 <td>{item.Driver.givenName} {item.Driver.familyName}</td>
-                                <td>{item.Constructors.name}</td>
+                                <td>{item.Constructors[0].name}</td>
                                 <td>{item.points}</td>
                                 </tr>
                             );
