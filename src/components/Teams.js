@@ -4,7 +4,7 @@ import * as $ from "jquery";
 export default class Teams extends React.Component {
 
     state= {
-        teams:[]
+        teams:{}
     }
 
     componentDidMount(){
@@ -14,11 +14,12 @@ export default class Teams extends React.Component {
                 teams: data
             })
         })
+        console.log(this.state.teams)
     }
     render() {
         return(
             <div>
-                {}
+               
             </div>
         )
     }
