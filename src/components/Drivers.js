@@ -13,15 +13,15 @@ export default class Drivers extends React.Component {
     getDrivers = () => {
         const url = "http://ergast.com/api/f1/2013/driverStandings.json";
         $.get(url, (data) => {
+            console.log("state", data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
             this.setState({
-                drivers: data
+                drivers: data.MRData.StandingsTable.StandingsLists[0].DriverStandings
             })
         })
-        console.log(this.state.drivers);
     }
 
     render() {
-        
+        console.log("state render", this.state.drivers);
 
         return(
             <div>
