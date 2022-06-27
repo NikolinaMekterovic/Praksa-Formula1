@@ -3,7 +3,7 @@ import * as $ from "jquery";
 
 export default class Drivers extends React.Component {
     state = {
-        drivers: {}
+        drivers: []
     }
 
     componentDidMount() {
@@ -21,7 +21,7 @@ export default class Drivers extends React.Component {
     }
 
     render() {
-        console.log("state render", this.state.drivers);
+        // console.log("state render", this.state.drivers);
 
         return (
             <div>
@@ -32,18 +32,16 @@ export default class Drivers extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.drivers.map(item => {
-                            return (
+                    {this.state.drivers.map(item=>{
+                            return(
                                 <tr>
-                                    <td>{item.position}</td>
-                                    <td>{item.Driver.givenName}</td>
-                                    <td></td>
-                                    <td></td>
+                                <td>{item.position}</td>
+                                <td>{item.Driver.givenName} {item.Driver.familyName}</td>
+                                <td>{item.Constructors.name}</td>
+                                <td>{item.points}</td>
                                 </tr>
-
-                            )
+                            );
                         })}
-
                     </tbody>
                 </table>
 
