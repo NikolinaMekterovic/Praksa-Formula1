@@ -19,9 +19,9 @@ export default class App extends React.Component {
                         <li><Link to="/teams">Teams</Link></li>
                     </ul>
                     <Switch>
-                        <Route path="/" component={Drivers}></Route>
-                        <Route path="/races" component={Races}></Route>
-                        <Route path="/teams" component={Teams}></Route>
+                        <Route path="/" exact component={Drivers}></Route>
+                        <Route path="/races" exact component={Races}></Route>
+                        <Route path="/teams" exact component={Teams}></Route>
                     </Switch>
                 </Router>
             </div>
