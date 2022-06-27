@@ -1,4 +1,5 @@
 import React from "react";
+import Drivers from "./components/Drivers";
 import { BrowserRouter as Router , Link , Routes , Route } from "react-router-dom";
 import Drivers from "./components/Drivers";
 import Races from "./components/Races"
@@ -9,6 +10,8 @@ export default class App extends React.Component {
         return(
             <div>
                 <h1>Praksa</h1>
+                <Drivers />
+
                 <Router>
                     <ul>
                         <li><Link to="/">Drivers</Link></li>
