@@ -10,8 +10,6 @@ export default class App extends React.Component {
         return(
             <div>
                 <h1>Praksa</h1>
-                <Drivers />
-
                 <Router history={history}>
                     <ul>
                         <li><Link to="/">Drivers</Link></li>
