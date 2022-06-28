@@ -1,38 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as $ from "jquery";
 
-export default class Drivers extends React.Component {
-    state = {
-        drivers: []
-    }
+const Drivers = () => {
+    const [drivers, getDrivers] = useState([])
 
-    componentDidMount() {
-        this.getDrivers()
-    }
-
-    getDrivers = () => {
-        const url = "http://ergast.com/api/f1/2013/driverStandings.json";
+    useEffect(() => {
+       addDrivers()
+    }, [])
+    const addDrivers = () => {
+        const url = "http://ergast.com/api/f1/2013/driverStandings.json"
         $.get(url, (data) => {
-            console.log("state", data.MRData.StandingsTable.StandingsLists[0].DriverStandings);
-            this.setState({
-                drivers: data.MRData.StandingsTable.StandingsLists[0].DriverStandings
-            })
+            getDrivers(data.MRData.StandingsTable.StandingsLists[0].DriverStandings)
         })
     }
 
-    render() {
-        // console.log("state render", this.state.drivers);
-
-        return (
-            <div>
-                <table>
+    return(
+        <div>
+             <table>
                     <thead>
                         <tr>
                             <th colSpan={3}>Drivers Championship Standings - 2013</th>
                         </tr>
                     </thead>
                     <tbody>
-                    {this.state.drivers.map(item=>{
+                    {drivers.map(item=>{
                             return(
                                 <tr key={item.position}>
                                 <td>{item.position}</td>
@@ -44,10 +35,9 @@ export default class Drivers extends React.Component {
                         })}
                     </tbody>
                 </table>
-
-
-                <h1>Drivers</h1>
-            </div>
-        )
-    }
+            
+        </div>
+    )
 }
+
+export default Drivers;

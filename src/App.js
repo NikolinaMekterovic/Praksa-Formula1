@@ -1,28 +1,28 @@
 import React from "react";
-import { Router , Link , Switch , Route } from "react-router-dom";
-import Drivers from "./components/Drivers";
-import Races from "./components/Races"
+import { BrowserRouter as Router, Link, Routes, Route } from "react-router-dom";
 import Teams from "./components/Teams";
-import history from "./history";
+import Drivers from "./components/Drivers";
+import Races from "./components/Races";
 
-export default class App extends React.Component {
-    render() {
-        return(
-            <div>
-                <h1>Praksa</h1>
-                <Router history={history}>
-                    <ul>
-                        <li><Link to="/">Drivers</Link></li>
-                        <li><Link to="/races">Races</Link></li>
-                        <li><Link to="/teams">Teams</Link></li>
-                    </ul>
-                    <Switch>
-                        <Route path="/" exact component={Drivers}></Route>
-                        <Route path="/races" exact component={Races}></Route>
-                        <Route path="/teams" exact component={Teams}></Route>
-                    </Switch>
-                </Router>
-            </div>
-        )
-    }
+const App = () => {
+
+    return (
+        <div>
+            <h1>Praksa</h1>
+            <Router>
+                <ul>
+                    <li><Link to="/">Drivers</Link></li>
+                    <li><Link to="/races">Races</Link></li>
+                    <li><Link to="/teams">Teams</Link></li>
+                </ul>
+                <Routes>
+                    <Route path="/" element={<Drivers />}></Route>
+                    <Route path="/races" component={<Races />}></Route>
+                    <Route path="/teams" component={<Teams />}></Route>
+                </Routes>
+            </Router>
+        </div>
+    )
 }
+
+export default App;

@@ -1,37 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as $ from "jquery";
 
-export default class Teams extends React.Component {
+const Teams = () => {
+    const [teams, getTeams] = useState([])
 
-    state = {
-        teams: []
-    }
-
-    componentDidMount() {
-        this.getTeams();
-    }
-
-    getTeams = () => {
+    useEffect(() => {
+       addTeams()
+    }, [])
+    const addTeams = () => {
         const url = "http://ergast.com/api/f1/2013/constructorStandings.json";
         $.get(url, (data) => {
-            console.log("timovi", data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
-            this.setState({
-                teams: data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings
-            })
+            getTeams(data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings)
         })
     }
 
-    render() {
-        return (
-            <div>
-                <table>
+    return(
+        <div>
+             <table>
                     <thead>
                         <tr>
                             <th colSpan={3}>Constructor Championship Standings - 2013</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.state.teams.map(item=>{
+                        {teams.map(item=>{
                             return(
                                 <tr>
                                 <td>{item.position}</td>
@@ -43,7 +35,9 @@ export default class Teams extends React.Component {
                         })}
                     </tbody>
                 </table>
-            </div>
-        )
-    }
+            
+        </div>
+    )
 }
+
+export default Teams;
