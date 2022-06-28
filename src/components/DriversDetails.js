@@ -8,7 +8,7 @@ const DriversDetails = () => {
 
     useEffect(() => {
         addDetails();
-    })
+    }, [])
 
     const addDetails = () => {
         const id = location.state.driverId;

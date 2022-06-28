@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import * as $ from "jquery";
-import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 const Drivers = () => {
