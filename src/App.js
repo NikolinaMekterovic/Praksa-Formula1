@@ -1,6 +1,6 @@
 import React from "react";
-import Drivers from "./components/Drivers";
 import { Router , Link , Switch , Route } from "react-router-dom";
+import Drivers from "./components/Drivers";
 import Races from "./components/Races"
 import Teams from "./components/Teams";
 import history from "./history";
@@ -10,8 +10,6 @@ export default class App extends React.Component {
         return(
             <div>
                 <h1>Praksa</h1>
-                <Drivers />
-
                 <Router history={history}>
                     <ul>
                         <li><Link to="/">Drivers</Link></li>
