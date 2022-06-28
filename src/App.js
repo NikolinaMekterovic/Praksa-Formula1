@@ -17,8 +17,8 @@ const App = () => {
                 </ul>
                 <Routes>
                     <Route path="/" element={<Drivers />}></Route>
-                    <Route path="/races" component={<Races />}></Route>
-                    <Route path="/teams" component={<Teams />}></Route>
+                    <Route path="/races" element={<Races />}></Route>
+                    <Route path="/teams" element={<Teams />}></Route>
                 </Routes>
             </Router>
         </div>
