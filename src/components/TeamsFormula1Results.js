@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import Flag from 'react-flagkit';
 
 
 const TeamsFormula1Results = () => {
@@ -16,7 +17,7 @@ const TeamsFormula1Results = () => {
         const id = location.state.constructorId;
         const urlDetails = `http://ergast.com/api/f1/2013/constructors/${id}/constructorStandings.json`;
         const urlResults = `http://ergast.com/api/f1/2013/constructors/${id}/results.json`;
-        const flags = `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`;
+        // const flags = `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`;
         const responseDetails = await fetch(urlDetails);
         const responseResults = await fetch(urlResults);
         const detailsX = await responseDetails.json();
@@ -33,16 +34,19 @@ const TeamsFormula1Results = () => {
         <div>
             <table>
                 {formulaDetails.map(item => {
-                    return(
-                    <tbody>
-                        <tr>
-                            <td colSpan="2">{item.Constructor.name}</td>
-                            <td>Country:{item.Constructor.nationality}</td>
-                            <td>Position:{item.position}</td>
-                            <td>Points:{item.points}</td>
-                            <td><a href={item.Constructor.url} target="_blank">History</a></td>
-                        </tr>
-                    </tbody>
+                    console.log(item.Constructor.nationality.slice(0,2))
+                    return (
+                        <tbody>
+                            <tr>
+                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} />
+                                <td colSpan="2">{item.Constructor.name}</td>
+                                <td><Flag country={item.Constructor.nationality.slice(0,2).toUpperCase()}/></td>
+                                <td>Country:{item.Constructor.nationality}</td>
+                                <td>Position:{item.position}</td>
+                                <td>Points:{item.points}</td>
+                                <td><a href={item.Constructor.url} target="_blank">History</a></td>
+                            </tr>
+                        </tbody>
                     );
                 })}
             </table>
@@ -57,8 +61,8 @@ const TeamsFormula1Results = () => {
                         <th>Points</th>
                     </tr>
                 </thead>
-                {formulaResults.map((item=>{
-                    return(
+                {formulaResults.map((item => {
+                    return (
                         <tbody>
                             <tr>
                                 <td>{item.round}</td>
