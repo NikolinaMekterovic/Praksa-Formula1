@@ -5,7 +5,7 @@ const Teams = () => {
     const [teams, getTeams] = useState([])
 
     useEffect(() => {
-       addTeams()
+        addTeams()
     }, [])
     const addTeams = () => {
         const url = "http://ergast.com/api/f1/2013/constructorStandings.json";
@@ -14,28 +14,28 @@ const Teams = () => {
         })
     }
 
-    return(
+    return (
         <div>
-             <table>
-                    <thead>
-                        <tr>
-                            <th colSpan={3}>Constructor Championship Standings - 2013</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {teams.map(item=>{
-                            return(
-                                <tr>
+            <table>
+                <thead>
+                    <tr>
+                        <th colSpan={3}>Constructor Championship Standings - 2013</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {teams.map(item => {
+                        return (
+                            <tr key={item.Constructor.constructorId}>
                                 <td>{item.position}</td>
                                 <td>{item.Constructor.name}</td>
-                                <td>Details</td>
+                                <td><a href={item.Constructor.url} target="_blank">Details</a></td>
                                 <td>{item.points}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-            
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+
         </div>
     )
 }

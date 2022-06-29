@@ -28,13 +28,13 @@ const GrandPrix = () => {
 
 
 
-        /*const id = location.state.circuitId;
-        console.log(id);
-        const url = `http://ergast.com/api/f1/2013/${id}/qualifying.json`;
-        $.get(url, (data) => {
-            console.log("GrandPrix", data.MRData.RaceTable.Races)
-            setRaces(data.MRData.RaceTable.Races[0].QualifyingResults);
-        })*/
+    /*const id = location.state.circuitId;
+    console.log(id);
+    const url = `http://ergast.com/api/f1/2013/${id}/qualifying.json`;
+    $.get(url, (data) => {
+        console.log("GrandPrix", data.MRData.RaceTable.Races)
+        setRaces(data.MRData.RaceTable.Races[0].QualifyingResults);
+    })*/
 
 
     /*useEffect(() => {
@@ -51,21 +51,23 @@ const GrandPrix = () => {
         })
     }*/
 
-    console.log("resultRaces",resultRaces)
+    console.log("resultRaces", resultRaces)
     return (
         <div>
             <h3>Qualifying Results</h3>
             <table>
                 <thead>
-                    <th>Pos</th>
-                    <th>Driver</th>
-                    <th>Team</th>
-                    <th>Best Time</th>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Driver</th>
+                        <th>Team</th>
+                        <th>Best Time</th>
+                    </tr>
                 </thead>
                 <tbody>
                     {races.map(item => {
                         return (
-                            <tr>
+                            <tr key={item.Driver.driverId}>
                                 <td>{item.position}</td>
                                 <td>{item.Driver.familyName}</td>
                                 <td></td>
@@ -78,18 +80,20 @@ const GrandPrix = () => {
 
 
             <h3>Race Result</h3>
-                <table>
+            <table>
                 <thead>
-                    <td>Pos</td>
-                    <td>Driver</td>
-                    <td>Team</td>
-                    <td>Result</td>
-                    <td>Points</td>
+                    <tr>
+                        <td>Pos</td>
+                        <td>Driver</td>
+                        <td>Team</td>
+                        <td>Result</td>
+                        <td>Points</td>
+                    </tr>
                 </thead>
                 <tbody>
                     {resultRaces.map(item => {
                         return (
-                            <tr>
+                            <tr key={item.Driver.driverId}>
                                 <td>{item.position}</td>
                                 <td>{item.Driver.familyName}</td>
                                 <td>{item.Constructor.name}</td>
