@@ -42,8 +42,8 @@ const DriversDetails = () => {
                     console.log("map details", driver);
                     return (
                         <div key={driver.position}>
+                            <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} />
                             <img src={"./../img/drivers/Adrian_Sutil.jpg"} alt="" />
-                            <img src={"https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json"} />
                             <p>{driver.Driver.givenName}</p>
                             <p>{driver.Driver.familyName}</p>
                             <p>{driver.Driver.nationality}</p>
