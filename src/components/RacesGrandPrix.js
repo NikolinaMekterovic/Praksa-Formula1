@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import * as $ from "jquery";
 import { useLocation } from "react-router-dom";
 
 const GrandPrix = () => {
     const [races, setRaces] = useState([]);
     const [resultRaces, setResultRaces] = useState([]);
     const location = useLocation();
+   
 
     useEffect(() => {
         getRaceDetails();
@@ -23,35 +23,8 @@ const GrandPrix = () => {
         setResultRaces(results.MRData.RaceTable.Races[0].Results);
     }
 
-
-
-
-
-
-    /*const id = location.state.circuitId;
-    console.log(id);
-    const url = `http://ergast.com/api/f1/2013/${id}/qualifying.json`;
-    $.get(url, (data) => {
-        console.log("GrandPrix", data.MRData.RaceTable.Races)
-        setRaces(data.MRData.RaceTable.Races[0].QualifyingResults);
-    })*/
-
-
-    /*useEffect(() => {
-        addRaceResults()
-    }, [])
-
-    const addRaceResults = () => {
-        const id = location.state.circuitId;
-        console.log(id);
-        const url = `http://ergast.com/api/f1/2013/${id}/results.json`;
-        $.get(url, (data) => {
-            // console.log("Results", data.MRData.RaceTable.Races)
-            setResultRaces(data.MRData.RaceTable.Races[0].Results);
-        })
-    }*/
-
     console.log("resultRaces", resultRaces)
+
     return (
         <div>
             <h3>Qualifying Results</h3>
@@ -66,19 +39,23 @@ const GrandPrix = () => {
                 </thead>
                 <tbody>
                     {races.map(item => {
+                        let times = []
+                        times.push(item.Q1);
+                        times.push(item.Q2);
+                        times.push(item.Q3);
+                        times.sort();
+                        console.log(times);
                         return (
                             <tr key={item.Driver.driverId}>
                                 <td>{item.position}</td>
                                 <td>{item.Driver.familyName}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{item.Constructor.name}</td>
+                                <td>{times[0]}</td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
-
-
             <h3>Race Result</h3>
             <table>
                 <thead>
