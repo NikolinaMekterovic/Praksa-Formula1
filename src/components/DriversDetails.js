@@ -37,24 +37,25 @@ const DriversDetails = () => {
 
     return (
         <div>
-            <table>
-                <tbody>
-                    {details.map(driver => {
-                        console.log("map details", driver);
-                        return (
-                            <tr key={driver.position}>
-                                <td>{driver.Driver.givenName}</td>
-                                <td>{driver.Driver.familyName}</td>
-                                <td>{driver.Driver.nationality}</td>
-                                <td>{driver.Constructors[0].name}</td>
-                                <td>{driver.Driver.dateOfBirth}</td>
-                                <td>Biografy {driver.Driver.url}</td>
-                            </tr>
-                        )
-                    })}
+            <div>
+                {details.map(driver => {
+                    console.log("map details", driver);
+                    return (
+                        <div key={driver.position}>
+                            <img src={"./../img/drivers/Adrian_Sutil.jpg"} alt="" />
+                            <img src={"https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json"} />
+                            <p>{driver.Driver.givenName}</p>
+                            <p>{driver.Driver.familyName}</p>
+                            <p>{driver.Driver.nationality}</p>
+                            <p>{driver.Constructors[0].name}</p>
+                            <p>{driver.Driver.dateOfBirth}</p>
+                            <p>Biografy {driver.Driver.url}</p>
+                        </div>
+                    )
+                })}
 
-                </tbody>
-            </table>
+
+            </div>
 
             <table>
                 <thead>
