@@ -3,6 +3,8 @@
         "@babel/preset-env",
         "@babel/preset-react"
     ],
-        "plugins": ["@emotion"]
-    
+    "plugins": [
+        "@emotion",
+        ["@babel/transform-runtime"]
+    ]
 }
