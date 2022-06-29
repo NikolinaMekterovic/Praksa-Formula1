@@ -5,6 +5,7 @@ import Drivers from "./components/Drivers";
 import Races from "./components/Races";
 import DriversDetails from "./components/DriversDetails";
 import RacesGrandPrix from "./components/RacesGrandPrix";
+import TeamsFormula1Results from "./components/TeamsFormula1Results";
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
                     <Route path="/teams" element={<Teams />}></Route>
                     <Route path="/driverDetails" element={<DriversDetails />}></Route>
                     <Route path="/racesGrandPrix" element={<RacesGrandPrix />}></Route>
+                    <Route path="/teamsForumla1Results" element={<TeamsFormula1Results />}></Route>
                 </Routes>
             </Router>
         </div>

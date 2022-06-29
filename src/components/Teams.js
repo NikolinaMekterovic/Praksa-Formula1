@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import * as $ from "jquery";
+import { useNavigate } from 'react-router-dom';
 
 const Teams = () => {
-    const [teams, getTeams] = useState([])
+    const [teams, getTeams] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         addTeams()
@@ -12,6 +14,10 @@ const Teams = () => {
         $.get(url, (data) => {
             getTeams(data.MRData.StandingsTable.StandingsLists[0].ConstructorStandings)
         })
+    }
+
+    const handleClickDetails = (constructorId) => {
+        navigate("/teamsForumla1Results", { state: { constructorId: constructorId } });
     }
 
     return (
@@ -27,7 +33,7 @@ const Teams = () => {
                         return (
                             <tr key={item.Constructor.constructorId}>
                                 <td>{item.position}</td>
-                                <td>{item.Constructor.name}</td>
+                                <td onClick={() => { handleClickDetails(item.Constructor.constructorId) }}>{item.Constructor.name}</td>
                                 <td><a href={item.Constructor.url} target="_blank">Details</a></td>
                                 <td>{item.points}</td>
                             </tr>
