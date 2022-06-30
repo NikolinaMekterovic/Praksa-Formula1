@@ -7,7 +7,8 @@ const DriversDetails = () => {
     const [details, setDetails] = useState([]);
     const [races, setRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [flagsDetails, setFlags] = useState([])
+    const [flagsDetails, setFlags] = useState([]);
+    const [flagsUrl, setFlagsUrl] = useState([]);
     const location = useLocation();
 
     useEffect(() => {
@@ -19,21 +20,66 @@ const DriversDetails = () => {
         const driversUrl = `http://ergast.com/api/f1/2013/drivers/${id}/driverStandings.json`;
         const raceUrl = `http://ergast.com/api/f1/2013/drivers/${id}/results.json`;
         const urlFlags = `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`;
+        const urlFlagsPrix = `http://ergast.com/api/f1/2013/drivers/${id}/results.json`;
         const resposeDriver = await fetch(driversUrl);
         const driverDetails = await resposeDriver.json();
         const responseRace = await fetch(raceUrl);
         const raceDetails = await responseRace.json();
         const responseFlags = await fetch(urlFlags)
         const flagsX = await responseFlags.json();
+        const resposneFlagsPrix = await fetch(urlFlagsPrix);
+        const flagPrix = await resposneFlagsPrix.json();
         setDetails(driverDetails.MRData.StandingsTable.StandingsLists[0].DriverStandings)
         setRaces(raceDetails.MRData.RaceTable.Races)
         setFlags(flagsX);
+        setFlagsUrl(flagPrix.MRData.RaceTable);
         setIsLoading(false)
         console.warn("id", id)
     }
-    
-    if(isLoading) {
-        return(<CircleLoader size={70} color="green" />)
+
+    const setColor = (position) => {
+        let color = "";
+        console.log("position", position)
+        switch (position) {
+            case "1":
+                color = "yellow";
+                break;
+            case "2":
+                color = "gray";
+                break; 
+            case "3":
+                color = "orange";
+                break; 
+            case "4":
+                color = "lightgreen";
+                break; 
+            case "5":
+                color = "lightblue";
+                break; 
+            case "6":
+                color = "lavender";
+                break; 
+            case "7":
+                color = "lightsolmon";
+                break; 
+            case "8":
+                color = "lemonchiffon";
+                break; 
+            case "9":
+                color = "lightcoral";
+                break; 
+            case "10":
+                color = "lightpink";
+                break;
+            default:
+                color = "darkgrey";
+                break;
+        }
+        return color;
+    }
+
+    if (isLoading) {
+        return (<CircleLoader size={70} color="green" />)
     }
 
     return (
@@ -44,13 +90,13 @@ const DriversDetails = () => {
                     return (
                         <div key={driver.position}>
                             <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} />
-                            <p>{flagsDetails.map((flag,i) => {
-                                    if (driver.Driver.nationality === flag.nationality) {
-                                        return <Flag key ={i} country={flag.alpha_2_code} />
-                                    }else if(driver.Driver.nationality === "British" && flag.nationality === "British, UK") {
-                                        return (<Flag key ={i}country="GB" />)
-                                    }
-                                })}</p>
+                            <p>{flagsDetails.map((flag, i) => {
+                                if (driver.Driver.nationality === flag.nationality) {
+                                    return <Flag key={i} country={flag.alpha_2_code} />
+                                } else if (driver.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                    return (<Flag key={i} country="GB" />)
+                                }
+                            })}</p>
                             <p>{driver.Driver.givenName}</p>
                             <p>{driver.Driver.familyName}</p>
                             <p>{driver.Driver.nationality}</p>
@@ -82,18 +128,18 @@ const DriversDetails = () => {
                             <tr key={item.round}>
                                 <td>{item.round}</td>
                                 <td>
-                                {/* {flagsDetails.map((flag,i) => {
-                                    if (races.Circuit.Location.country === flag.nationality) {
-                                        return <Flag key ={i} country={flag.alpha_2_code} />
-                                    }else if(races.Circuit.Location.country === "British" && flag.nationality === "British, UK") {
-                                        return (<Flag key ={i}country="GB" />)
-                                    }
-                                })} */}
+                                    {/* {flagsUrl.map((flag, i) => {
+                                        if (flag.Races[0].Circuit.Location.country === flag.nationality) {
+                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                        } else if (flag.Races[0].Circuit.Location.country === "British" && flag.nationality === "British, UK") {
+                                            return (<Flag key={i} country="GB" />)
+                                        }
+                                    })} */}
                                     {item.raceName}
-                                    </td>
+                                </td>
                                 <td>{item.Results[0].Constructor.name}</td>
                                 <td>{item.Results[0].grid}</td>
-                                <td>{item.Results[0].position}</td>
+                                <td style={{ "backgroundColor": setColor(item.Results[0].position) }}>{item.Results[0].position}</td>
                             </tr>
                         );
                     })}
