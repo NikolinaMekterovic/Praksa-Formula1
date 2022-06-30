@@ -27,6 +27,7 @@ const TeamsFormula1Results = () => {
         const flagsX = await responseFlags.json();
         setformulaDetails(detailsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
         setFormulaResults(resultsX.MRData.RaceTable.Races);
+        console.warn("rezultati",resultsX.MRData.RaceTable.Races[0].Circuit.Location.country)
         setFlags(flagsX);
         setIsLoading(false);
     }
@@ -77,7 +78,17 @@ const TeamsFormula1Results = () => {
                         <tbody>
                             <tr key={item.Circuit.circuitId}>
                                 <td>{item.round}</td>
-                                <td>{item.raceName}</td>
+                                <td>
+                                    {/* {flagsDetails.map((flag,i) => {
+                                        if (item[0].Circuit.Location.country === flag.en_short_name) {
+                                            return <Flag key ={i} country={flag.alpha_2_code} />
+                                        }
+                                        else if(item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
+                                            return (<Flag key ={i}country="GB" />)
+                                        }
+                                    })} */}
+                                    
+                                    {item.raceName}</td>
                                 <td>{item.Results[0].position}</td>
                                 <td>{item.Results[1].position}</td>
                                 <td>{parseInt(item.Results[0].points) + parseInt(item.Results[1].points)}</td>
