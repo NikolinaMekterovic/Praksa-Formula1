@@ -105,7 +105,7 @@ const GrandPrix = () => {
                             <p>Country: {item.Circuit.Location.country}</p>
                             <p>Location:{item.Circuit.Location.locality}</p>
                             <p>Date:{item.date}</p>
-                            <p>Full report </p>
+                            <p>Full report <span><a href={item.Circuit.url}>Link</a></span></p>
                         </div>
                     )
                 })}
