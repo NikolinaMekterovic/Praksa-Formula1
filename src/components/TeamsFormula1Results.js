@@ -7,6 +7,7 @@ const TeamsFormula1Results = () => {
     const [formulaDetails, setformulaDetails] = useState([]);
     const [formulaResults, setFormulaResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [flagsDetails, setFlags] = useState([])
     const location = useLocation();
 
     useEffect(() => {
@@ -17,30 +18,40 @@ const TeamsFormula1Results = () => {
         const id = location.state.constructorId;
         const urlDetails = `http://ergast.com/api/f1/2013/constructors/${id}/constructorStandings.json`;
         const urlResults = `http://ergast.com/api/f1/2013/constructors/${id}/results.json`;
-        // const flags = `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`;
+        const urlFlags = `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`;
         const responseDetails = await fetch(urlDetails);
         const responseResults = await fetch(urlResults);
+        const responseFlags = await fetch(urlFlags)
         const detailsX = await responseDetails.json();
         const resultsX = await responseResults.json();
+        const flagsX = await responseFlags.json();
         setformulaDetails(detailsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
         setFormulaResults(resultsX.MRData.RaceTable.Races);
+        setFlags(flagsX);
         setIsLoading(false);
     }
+
     if (isLoading) {
         return (<h1>Is loading...</h1>);
     }
-    return (
 
+    return (
         <div>
             <table>
                 {formulaDetails.map(item => {
-                    console.log(item.Constructor.nationality.slice(0,2))
                     return (
                         <tbody>
-                            <tr>
-                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} />
+                            <tr key={item.Constructor.constructorId}>
+                                <td><img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} /></td>
                                 <td colSpan="2">{item.Constructor.name}</td>
-                                <td><Flag country={item.Constructor.nationality.slice(0,2).toUpperCase()}/></td>
+                                <td>{flagsDetails.map((flag,i) => {
+                                    if (item.Constructor.nationality === flag.nationality) {
+                                        return <Flag key ={i} country={flag.alpha_2_code} />
+                                    }else if(item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
+                                        return (<Flag key ={i}country="GB" />)
+                                    }
+                                })}
+                                </td>
                                 <td>Country:{item.Constructor.nationality}</td>
                                 <td>Position:{item.position}</td>
                                 <td>Points:{item.points}</td>
@@ -64,7 +75,7 @@ const TeamsFormula1Results = () => {
                 {formulaResults.map((item => {
                     return (
                         <tbody>
-                            <tr>
+                            <tr key={item.Circuit.circuitId}>
                                 <td>{item.round}</td>
                                 <td>{item.raceName}</td>
                                 <td>{item.Results[0].position}</td>
