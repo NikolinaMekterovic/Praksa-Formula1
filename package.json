@@ -34,6 +34,7 @@
     "antd": "^4.20.5",
     "jquery": "^3.6.0",
     "prop-types": "^15.8.1",
+    "react-flagkit": "^2.0.4",
     "react-router-dom": "^6.3.0",
     "react-spinners": "^0.12.0"
   }
