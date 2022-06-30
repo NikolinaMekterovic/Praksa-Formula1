@@ -1,38 +1,33 @@
 import React, { useState, useEffect } from "react";
-import * as $ from "jquery";
 import { useLocation } from "react-router-dom";
+import { CircleLoader } from "react-spinners";
 
 const DriversDetails = () => {
-    const [details, getDetails] = useState([]);
-    const [races, getRaces] = useState([])
-    // const [pictures, getPictures] = useState([]);
+    const [details, setDetails] = useState([]);
+    const [races, setRaces] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const location = useLocation();
 
     useEffect(() => {
-        addDetails();
+        getDriverDetails();
     }, [])
 
-    const addDetails = () => {
+    const getDriverDetails = async () => {
         const id = location.state.driverId;
-        console.log(id);
-        const url = `http://ergast.com/api/f1/2013/drivers/${id}/driverStandings.json`;
+        const driversUrl = `http://ergast.com/api/f1/2013/drivers/${id}/driverStandings.json`;
+        const raceUrl = `http://ergast.com/api/f1/2013/drivers/${id}/results.json`;
 
-        $.get(url, (data) => {
-            getDetails(data.MRData.StandingsTable.StandingsLists[0].DriverStandings)
-        })
+        const resposeDriver = await fetch(driversUrl);
+        const driverDetails = await resposeDriver.json();
+        const responseRace = await fetch(raceUrl);
+        const raceDetails = await responseRace.json();
+        setDetails(driverDetails.MRData.StandingsTable.StandingsLists[0].DriverStandings)
+        setRaces(raceDetails.MRData.RaceTable.Races)
+        setIsLoading(false)
     }
-
-    useEffect(() => {
-        addRaces()
-    }, [])
-
-    const addRaces = () => {
-        const id = location.state.driverId;
-        const url = `http://ergast.com/api/f1/2013/drivers/${id}/results.json`
-        $.get(url, (data) => {
-            console.log("results", data)
-            getRaces(data.MRData.RaceTable.Races)
-        })
+    
+    if(isLoading) {
+        return(<CircleLoader size={70} color="green" />)
     }
 
     return (
@@ -53,8 +48,6 @@ const DriversDetails = () => {
                         </div>
                     )
                 })}
-
-
             </div>
 
             <table>
