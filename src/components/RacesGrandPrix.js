@@ -18,7 +18,7 @@ const GrandPrix = () => {
         const id = location.state.circuitId;
         const grandPrixUrl = `http://ergast.com/api/f1/2013/${id}/results.json`;
         const qualifyingUrl = `http://ergast.com/api/f1/2013/${id}/qualifying.json`;
-        const resultsUrl = `http://ergast.com/api/f1/2013/${id}/results.json`;//dohvatiti prvu tabelu
+        const resultsUrl = `http://ergast.com/api/f1/2013/${id}/results.json`;
         const responseGrandPrix = await fetch(grandPrixUrl);
         const prix = await responseGrandPrix.json();
         const responseQualifying = await fetch(qualifyingUrl);
@@ -102,7 +102,6 @@ const GrandPrix = () => {
                                 <td>{item.position}</td>
                                 <td>{item.Driver.familyName}</td>
                                 <td>{item.Constructor.name}</td>
-                                {/* Moze i ternary operator ili upitnici koji pitaju da li podatak postoji, ukoliko postoji prikazace ga a ukoliko ne onda ce ga preskociti */}
                                 <td>{item?.Time?.time}</td>
                                 <td>{item.points}</td>
                             </tr>
