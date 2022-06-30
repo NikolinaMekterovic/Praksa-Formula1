@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
-import * as $ from "jquery";
 import { useNavigate } from 'react-router-dom';
+import Flag from 'react-flagkit';
+
 
 const Races = () => {
-    const [races, getRaces] = useState([])
+    const [racesDetails, setRaces] = useState([]);
+    const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
         addRaces()
     }, [])
 
-    const addRaces = () => {
-        const url = "http://ergast.com/api/f1/2013/results/1.json";
-        $.get(url, (data) => {
-            getRaces(data.MRData.RaceTable.Races)
-        })
+    const addRaces = async () => {
+        const urlRaces = "http://ergast.com/api/f1/2013/results/1.json";
+        const urlFlags = "https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json"
+        const responseRaces = await fetch(urlRaces);
+        const responseFlags = await fetch(urlFlags);
+        const racesX = await responseRaces.json();
+        const flagsX = await responseFlags.json();
+        setRaces(racesX.MRData.RaceTable.Races);
+        setFlags(flagsX);
     }
 
     const handleClickDetails = (circuitId) => {
-        const url = "http://ergast.com/api/f1/2013/qualifying.json";
-        $.get(url, (data) => {
-            getRaces(data.MRData.RaceTable.Races.QualifyingResults)
-        })
         navigate("/racesGrandPrix", { state: { circuitId: circuitId } });
     }
 
@@ -39,15 +41,39 @@ const Races = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {races.map(item => {
+                    {racesDetails.map(item => {
                         console.log(item);
                         return (
                             <tr key={item.Circuit.circuitId}>
                                 <td>{item.round}</td>
-                                <td onClick={() => { handleClickDetails(item.round) }}>{item.raceName}</td>
+                                <td onClick={() => { handleClickDetails(item.round) }}>
+                                    {flagsDetails.map((flag, i) => {
+                                        if (item.Circuit.Location.country === flag.en_short_name) {
+                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                        } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
+                                            return (<Flag key={i} country="GB" />)
+                                        }else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                            return (<Flag key={i} country="US" />)
+                                        }else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                                            return (<Flag key={i} country="KR" />)
+                                        }else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
+                                            return (<Flag key={i} country="AE" />)
+                                        }
+                                    })}
+                                    {item.raceName}
+                                </td>
                                 <td>{item.Circuit.circuitName}</td>
                                 <td>{item.date}</td>
-                                <td>{item.Results[0].Driver.familyName}</td>
+                                <td>
+                                    {flagsDetails.map((flag, i) => {
+                                        if (item.Results[0].Driver.nationality === flag.nationality) {
+                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                        } else if (item.Results[0].Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                            return (<Flag key={i} country="GB" />)
+                                        }
+                                    })}
+                                    {item.Results[0].Driver.familyName}
+                                </td>
                             </tr>
                         );
                     })}

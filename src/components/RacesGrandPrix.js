@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { CircleLoader } from "react-spinners";
+import Flag from 'react-flagkit';
 
 const GrandPrix = () => {
     const [grandPrix, setGrandPrix] = useState([]);
-    const [races, setRaces] = useState([]);
+    const [qulifyingRaces, setQualifying] = useState([]);
     const [resultRaces, setResultRaces] = useState([]);
+    const [flagsDetails, setFlags] = useState([]);
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
 
@@ -19,19 +21,22 @@ const GrandPrix = () => {
         const grandPrixUrl = `http://ergast.com/api/f1/2013/${id}/results.json`;
         const qualifyingUrl = `http://ergast.com/api/f1/2013/${id}/qualifying.json`;
         const resultsUrl = `http://ergast.com/api/f1/2013/${id}/results.json`;
+        const urlFlags = `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`;
         const responseGrandPrix = await fetch(grandPrixUrl);
         const prix = await responseGrandPrix.json();
         const responseQualifying = await fetch(qualifyingUrl);
         const qualifying = await responseQualifying.json();
         const responseResults = await fetch(resultsUrl);
         const results = await responseResults.json();
+        const responseFlags = await fetch(urlFlags);
+        const flagsX = await responseFlags.json();
         setGrandPrix(prix.MRData.RaceTable.Races);
-        setRaces(qualifying.MRData.RaceTable.Races[0].QualifyingResults);
+        setQualifying(qualifying.MRData.RaceTable.Races[0].QualifyingResults);
         setResultRaces(results.MRData.RaceTable.Races[0].Results);
-        setIsLoading(false)
+        setFlags(flagsX);
+        setIsLoading(false);
+        console.warn("id", id)
     }
-
-    // console.log("resultRaces", resultRaces)
     if (isLoading) {
         return (<CircleLoader size={70} color="green" />)
     }
@@ -42,6 +47,19 @@ const GrandPrix = () => {
                 {grandPrix.map(item => {
                     return (
                         <div key={item.Circuit.circuitId}>
+                            <div>{flagsDetails.map((flag, i) => {
+                                if (item.Circuit.Location.country === flag.en_short_name) {
+                                    return <Flag key={i} country={flag.alpha_2_code} />
+                                } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
+                                    return (<Flag key={i} country="GB" />)
+                                } else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                    return (<Flag key={i} country="US" />)
+                                } else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                                    return (<Flag key={i} country="KR" />)
+                                } else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
+                                    return (<Flag key={i} country="AE" />)
+                                }
+                            })}</div>
                             <h3>{item.raceName}</h3>
                             <p>Country: {item.Circuit.Location.country}</p>
                             <p>Location:{item.Circuit.Location.locality}</p>
@@ -66,7 +84,7 @@ const GrandPrix = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {races.map(item => {
+                    {qulifyingRaces.map(item => {
                         let times = []
                         times.push(item.Q1);
                         times.push(item.Q2);
@@ -76,7 +94,16 @@ const GrandPrix = () => {
                         return (
                             <tr key={item.Driver.driverId}>
                                 <td>{item.position}</td>
-                                <td>{item.Driver.familyName}</td>
+                                <td>
+                                    {flagsDetails.map((flag, i) => {
+                                        if (item.Driver.nationality === flag.nationality) {
+                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                        } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                            return (<Flag key={i} country="GB" />)
+                                        }
+                                    })}
+                                    {item.Driver.familyName}
+                                </td>
                                 <td>{item.Constructor.name}</td>
                                 <td>{times[0]}</td>
                             </tr>
@@ -100,7 +127,16 @@ const GrandPrix = () => {
                         return (
                             <tr key={item.Driver.driverId}>
                                 <td>{item.position}</td>
-                                <td>{item.Driver.familyName}</td>
+                                <td>
+                                    {flagsDetails.map((flag, i) => {
+                                        if (item.Driver.nationality === flag.nationality) {
+                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                        } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                            return (<Flag key={i} country="GB" />)
+                                        }
+                                    })}
+                                    {item.Driver.familyName}
+                                </td>
                                 <td>{item.Constructor.name}</td>
                                 <td>{item?.Time?.time}</td>
                                 <td>{item.points}</td>

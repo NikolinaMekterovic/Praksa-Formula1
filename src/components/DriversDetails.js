@@ -8,7 +8,6 @@ const DriversDetails = () => {
     const [races, setRaces] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [flagsDetails, setFlags] = useState([]);
-    const [flagsUrl, setFlagsUrl] = useState([]);
     const location = useLocation();
 
     useEffect(() => {
@@ -20,19 +19,15 @@ const DriversDetails = () => {
         const driversUrl = `http://ergast.com/api/f1/2013/drivers/${id}/driverStandings.json`;
         const raceUrl = `http://ergast.com/api/f1/2013/drivers/${id}/results.json`;
         const urlFlags = `https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json`;
-        const urlFlagsPrix = `http://ergast.com/api/f1/2013/drivers/${id}/results.json`;
         const resposeDriver = await fetch(driversUrl);
         const driverDetails = await resposeDriver.json();
         const responseRace = await fetch(raceUrl);
         const raceDetails = await responseRace.json();
         const responseFlags = await fetch(urlFlags)
         const flagsX = await responseFlags.json();
-        const resposneFlagsPrix = await fetch(urlFlagsPrix);
-        const flagPrix = await resposneFlagsPrix.json();
         setDetails(driverDetails.MRData.StandingsTable.StandingsLists[0].DriverStandings)
         setRaces(raceDetails.MRData.RaceTable.Races)
         setFlags(flagsX);
-        setFlagsUrl(flagPrix.MRData.RaceTable);
         setIsLoading(false)
         console.warn("id", id)
     }
@@ -128,13 +123,19 @@ const DriversDetails = () => {
                             <tr key={item.round}>
                                 <td>{item.round}</td>
                                 <td>
-                                    {/* {flagsUrl.map((flag, i) => {
-                                        if (flag.Races[0].Circuit.Location.country === flag.nationality) {
+                                {flagsDetails.map((flag, i) => {
+                                        if (item.Circuit.Location.country === flag.en_short_name) {
                                             return <Flag key={i} country={flag.alpha_2_code} />
-                                        } else if (flag.Races[0].Circuit.Location.country === "British" && flag.nationality === "British, UK") {
+                                        } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
                                             return (<Flag key={i} country="GB" />)
+                                        }else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                            return (<Flag key={i} country="US" />)
+                                        }else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                                            return (<Flag key={i} country="KR" />)
+                                        }else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
+                                            return (<Flag key={i} country="AE" />)
                                         }
-                                    })} */}
+                                    })}
                                     {item.raceName}
                                 </td>
                                 <td>{item.Results[0].Constructor.name}</td>

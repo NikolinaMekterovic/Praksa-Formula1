@@ -27,7 +27,6 @@ const TeamsFormula1Results = () => {
         const flagsX = await responseFlags.json();
         setformulaDetails(detailsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
         setFormulaResults(resultsX.MRData.RaceTable.Races);
-        console.warn("rezultati",resultsX.MRData.RaceTable.Races[0].Circuit.Location.country)
         setFlags(flagsX);
         setIsLoading(false);
     }
@@ -79,15 +78,19 @@ const TeamsFormula1Results = () => {
                             <tr key={item.Circuit.circuitId}>
                                 <td>{item.round}</td>
                                 <td>
-                                    {/* {flagsDetails.map((flag,i) => {
-                                        if (item[0].Circuit.Location.country === flag.en_short_name) {
-                                            return <Flag key ={i} country={flag.alpha_2_code} />
+                                {flagsDetails.map((flag, i) => {
+                                        if (item.Circuit.Location.country === flag.en_short_name) {
+                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                        } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
+                                            return (<Flag key={i} country="GB" />)
+                                        }else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                            return (<Flag key={i} country="US" />)
+                                        }else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                                            return (<Flag key={i} country="KR" />)
+                                        }else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
+                                            return (<Flag key={i} country="AE" />)
                                         }
-                                        else if(item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
-                                            return (<Flag key ={i}country="GB" />)
-                                        }
-                                    })} */}
-                                    
+                                    })}
                                     {item.raceName}</td>
                                 <td>{item.Results[0].position}</td>
                                 <td>{item.Results[1].position}</td>
