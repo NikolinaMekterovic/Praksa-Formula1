@@ -11,7 +11,6 @@ const GrandPrix = () => {
     const location = useLocation();
     const [isLoading, setIsLoading] = useState(true);
 
-
     useEffect(() => {
         getRaceDetails();
     }, [])
@@ -37,6 +36,48 @@ const GrandPrix = () => {
         setIsLoading(false);
         console.warn("id", id)
     }
+
+    const setColor = (position) => {
+        let color = "";
+        console.log("position", position)
+        switch (position) {
+            case "1":
+                color = "yellow";
+                break;
+            case "2":
+                color = "gray";
+                break;
+            case "3":
+                color = "orange";
+                break;
+            case "4":
+                color = "lightgreen";
+                break;
+            case "5":
+                color = "lightblue";
+                break;
+            case "6":
+                color = "lavender";
+                break;
+            case "7":
+                color = "lightsolmon";
+                break;
+            case "8":
+                color = "lemonchiffon";
+                break;
+            case "9":
+                color = "lightcoral";
+                break;
+            case "10":
+                color = "lightpink";
+                break;
+            default:
+                color = "darkgrey";
+                break;
+        }
+        return color;
+    }
+
     if (isLoading) {
         return (<CircleLoader size={70} color="green" />)
     }
@@ -65,13 +106,9 @@ const GrandPrix = () => {
                             <p>Location:{item.Circuit.Location.locality}</p>
                             <p>Date:{item.date}</p>
                             <p>Full report </p>
-
                         </div>
-
                     )
                 })}
-
-
             </div>
             <h3>Qualifying Results</h3>
             <table>
@@ -139,13 +176,12 @@ const GrandPrix = () => {
                                 </td>
                                 <td>{item.Constructor.name}</td>
                                 <td>{item?.Time?.time}</td>
-                                <td>{item.points}</td>
+                                <td style={{ "backgroundColor": setColor(item.points) }}>{item.points}</td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
-
         </div>
     )
 }

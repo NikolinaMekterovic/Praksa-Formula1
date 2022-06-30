@@ -55,7 +55,6 @@ const Drivers = () => {
                     })}
                 </tbody>
             </table>
-
         </div>
     )
 }

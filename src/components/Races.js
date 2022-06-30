@@ -79,7 +79,6 @@ const Races = () => {
                     })}
                 </tbody>
             </table>
-
             <h1>Race Calendar</h1>
         </div>
     )
