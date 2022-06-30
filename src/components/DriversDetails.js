@@ -25,16 +25,14 @@ const DriversDetails = () => {
         const raceDetails = await responseRace.json();
         const responseFlags = await fetch(urlFlags)
         const flagsX = await responseFlags.json();
-        setDetails(driverDetails.MRData.StandingsTable.StandingsLists[0].DriverStandings)
+        setDetails(driverDetails.MRData.StandingsTable.StandingsLists[0].DriverStandings);
         setRaces(raceDetails.MRData.RaceTable.Races)
         setFlags(flagsX);
         setIsLoading(false)
-        console.warn("id", id)
     }
 
     const setColor = (position) => {
         let color = "";
-        console.log("position", position)
         switch (position) {
             case "1":
                 color = "yellow";
@@ -81,7 +79,6 @@ const DriversDetails = () => {
         <div>
             <div>
                 {details.map(driver => {
-                    console.log("map details", driver);
                     return (
                         <div key={driver.position}>
                             <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} />
@@ -118,7 +115,6 @@ const DriversDetails = () => {
                 </thead>
                 <tbody>
                     {races.map(item => {
-                        console.log(item);
                         return (
                             <tr key={item.round}>
                                 <td>{item.round}</td>

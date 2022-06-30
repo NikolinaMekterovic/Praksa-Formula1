@@ -34,12 +34,10 @@ const GrandPrix = () => {
         setResultRaces(results.MRData.RaceTable.Races[0].Results);
         setFlags(flagsX);
         setIsLoading(false);
-        console.warn("id", id)
     }
 
     const setColor = (position) => {
         let color = "";
-        console.log("position", position)
         switch (position) {
             case "1":
                 color = "yellow";

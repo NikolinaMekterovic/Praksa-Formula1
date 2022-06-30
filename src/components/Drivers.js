@@ -18,7 +18,7 @@ const Drivers = () => {
         const responseFlags = await fetch(urlFlags);
         const urlX = await responseUrl.json();
         const flagsX = await responseFlags.json();
-        setDrivers(urlX.MRData.StandingsTable.StandingsLists[0].DriverStandings)
+        setDrivers(urlX.MRData.StandingsTable.StandingsLists[0].DriverStandings);
         setFlags(flagsX)
     }
 

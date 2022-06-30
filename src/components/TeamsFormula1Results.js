@@ -34,7 +34,6 @@ const TeamsFormula1Results = () => {
 
     const setColor = (position) => {
         let color = "";
-        console.log("position", position)
         switch (position) {
             case "1":
                 color = "yellow";
