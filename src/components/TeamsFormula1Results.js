@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Flag from 'react-flagkit';
-import { CircleLoader } from "react-spinners";
+import Loader from "./Loader"
 
 
 const TeamsFormula1Results = () => {
@@ -74,7 +74,7 @@ const TeamsFormula1Results = () => {
     }
 
     if (isLoading) {
-        return (<CircleLoader size={70} color="green" />);
+        return (<Loader size={70} color="green" />)
     }
 
     return (

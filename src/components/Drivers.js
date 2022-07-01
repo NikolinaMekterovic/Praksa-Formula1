@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Flag from "react-flagkit";
+import Loader from "./Loader";
 
 const Drivers = () => {
     const [drivers, setDrivers] = useState([]);
     const [flagsDetails, setFlags] = useState([])
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         addDrivers()
@@ -20,10 +22,15 @@ const Drivers = () => {
         const flagsX = await responseFlags.json();
         setDrivers(urlX.MRData.StandingsTable.StandingsLists[0].DriverStandings);
         setFlags(flagsX)
+        setIsLoading(false)
     }
 
     const handleClickDetails = (driverId) => {
         navigate("/driverDetails", { state: { driverId: driverId } });
+    }
+
+    if (isLoading) {
+        return (<Loader />)
     }
 
     return (

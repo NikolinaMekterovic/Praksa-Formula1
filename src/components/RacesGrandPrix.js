@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { CircleLoader } from "react-spinners";
+import Loader from "./Loader"
 import Flag from 'react-flagkit';
 
 const GrandPrix = () => {
@@ -77,7 +77,7 @@ const GrandPrix = () => {
     }
 
     if (isLoading) {
-        return (<CircleLoader size={70} color="green" />)
+        return (<Loader size={70} color="green" />)
     }
 
     return (

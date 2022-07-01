@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Flag from 'react-flagkit';
+import Loader from "./Loader";
 
 
 const Races = () => {
     const [racesDetails, setRaces] = useState([]);
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         addRaces()
@@ -21,23 +23,33 @@ const Races = () => {
         const flagsX = await responseFlags.json();
         setRaces(racesX.MRData.RaceTable.Races);
         setFlags(flagsX);
+        setIsLoading(false)
     }
 
     const handleClickDetails = (circuitId) => {
         navigate("/racesGrandPrix", { state: { circuitId: circuitId } });
     }
 
+    if (isLoading) {
+        return (<Loader size={70} color="green" />)
+    }
+
     return (
-        <div>
-            <h3>Races Championship - 2013</h3>
-            <table>
+        <div className="divTabele">
+            <table className="driversTable">
                 <thead>
+                <tr>
+                        <th colSpan={5}><h1><i>Race Calendar</i></h1></th>
+                    </tr>
                     <tr>
-                        <th>Round</th>
-                        <th>Grand Prix</th>
-                        <th>Circuit</th>
-                        <th>Date</th>
-                        <th>Winner</th>
+                        <td colSpan={5} className="podNaslov">Race Calendar - 2013</td>
+                    </tr>
+                    <tr>
+                        <th className="podNaslov">Round</th>
+                        <th className="podNaslov">Grand Prix</th>
+                        <th className="podNaslov">Circuit</th>
+                        <th className="podNaslov">Date</th>
+                        <th className="podNaslov">Winner</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -78,7 +90,6 @@ const Races = () => {
                     })}
                 </tbody>
             </table>
-            <h1>Race Calendar</h1>
         </div>
     )
 }

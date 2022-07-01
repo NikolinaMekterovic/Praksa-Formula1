@@ -8,7 +8,7 @@ const Loader = () => {
         setIsLoading(false)
     }
     if (isLoading) {
-        return (<CircleLoader size={70} color="green" />)
+        return (<div className="loaderClass"><CircleLoader size={150} color="yellow" /></div> )
     }
 
     return (
