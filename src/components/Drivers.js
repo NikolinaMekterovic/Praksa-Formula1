@@ -27,19 +27,22 @@ const Drivers = () => {
     }
 
     return (
-        <div>
-            <table>
-                <thead>
+        <div className="divTabele">
+            <table className="driversTable">
+            <thead>
                     <tr>
-                        <th colSpan={3}>Drivers Championship Standings - 2013</th>
+                        <th colSpan={4}><h1><i>Drivers Championship</i></h1></th>
+                    </tr>
+                    <tr>
+                        <td colSpan={4} className="podNaslov">Drivers Championship Standings - 2013</td>
                     </tr>
                 </thead>
                 <tbody>
                     {drivers.map(item => {
                         return (
                             <tr key={item.position}>
-                                <td>{item.position}</td>
-                                <td onClick={() => { handleClickDetails(item.Driver.driverId) }}>
+                                <td className="tdr">{item.position}</td>
+                                <td className="tdr" onClick={() => { handleClickDetails(item.Driver.driverId) }}>
                                 {flagsDetails.map((flag,i) => {
                                     if (item.Driver.nationality === flag.nationality) {
                                         return <Flag key ={i} country={flag.alpha_2_code} />
@@ -50,8 +53,8 @@ const Drivers = () => {
                                     }
                                 })}
                                     {item.Driver.givenName} {item.Driver.familyName}</td>
-                                <td>{item.Constructors[0].name}</td>
-                                <td>{item.points}</td>
+                                <td className="tdr">{item.Constructors[0].name}</td>
+                                <td className="tdr">{item.points}</td>
                             </tr>
                         );
                     })}
