@@ -125,9 +125,8 @@ const GrandPrix = () => {
                         times.push(item.Q2);
                         times.push(item.Q3);
                         times.sort();
-                        console.log(times);
                         return (
-                            <tr key={item.Driver.driverId}>
+                            <tr key={item.position}>
                                 <td>{item.position}</td>
                                 <td>
                                     {flagsDetails.map((flag, i) => {
@@ -160,7 +159,7 @@ const GrandPrix = () => {
                 <tbody>
                     {resultRaces.map(item => {
                         return (
-                            <tr key={item.Driver.driverId}>
+                            <tr key={item.position}>
                                 <td>{item.position}</td>
                                 <td>
                                     {flagsDetails.map((flag, i) => {

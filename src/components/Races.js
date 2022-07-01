@@ -42,7 +42,6 @@ const Races = () => {
                 </thead>
                 <tbody>
                     {racesDetails.map(item => {
-                        console.log(item);
                         return (
                             <tr key={item.Circuit.circuitId}>
                                 <td>{item.round}</td>

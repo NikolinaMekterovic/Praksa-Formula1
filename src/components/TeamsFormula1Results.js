@@ -8,7 +8,7 @@ const TeamsFormula1Results = () => {
     const [formulaDetails, setformulaDetails] = useState([]);
     const [formulaResults, setFormulaResults] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [flagsDetails, setFlags] = useState([])
+    const [flagsDetails, setFlags] = useState([]);
     const location = useLocation();
 
     useEffect(() => {
@@ -30,6 +30,7 @@ const TeamsFormula1Results = () => {
         setFormulaResults(resultsX.MRData.RaceTable.Races);
         setFlags(flagsX);
         setIsLoading(false);
+        console.warn(detailsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.Constructor)
     }
 
     const setColor = (position) => {
@@ -79,15 +80,15 @@ const TeamsFormula1Results = () => {
     return (
         <div>
             <table>
-                {formulaDetails.map(item => {
+                {formulaDetails.map((item,i) => {
                     return (
                         <tbody>
-                            <tr key={item.Constructor.constructorId}>
+                            <tr key={i}>
                                 <td><img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} /></td>
                                 <td colSpan="2">{item.Constructor.name}</td>
                                 <td>{flagsDetails.map((flag, i) => {
                                     if (item.Constructor.nationality === flag.nationality) {
-                                        return <Flag key={i} country={flag.alpha_2_code} />
+                                        return (<Flag key={i} country={flag.alpha_2_code} />)
                                     } else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
                                         return (<Flag key={i} country="GB" />)
                                     }
@@ -113,15 +114,15 @@ const TeamsFormula1Results = () => {
                         <th>Points</th>
                     </tr>
                 </thead>
-                {formulaResults.map((item => {
+                {formulaResults.map((item,i) => {
                     return (
                         <tbody>
-                            <tr key={item.Circuit.circuitId}>
+                            <tr key={i}>
                                 <td>{item.round}</td>
                                 <td>
                                     {flagsDetails.map((flag, i) => {
                                         if (item.Circuit.Location.country === flag.en_short_name) {
-                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                            return (<Flag key={i} country={flag.alpha_2_code} />)
                                         } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
                                             return (<Flag key={i} country="GB" />)
                                         } else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
@@ -139,7 +140,7 @@ const TeamsFormula1Results = () => {
                             </tr>
                         </tbody>
                     );
-                }))}
+                })}
             </table>
         </div>
     );

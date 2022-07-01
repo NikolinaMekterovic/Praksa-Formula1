@@ -45,6 +45,8 @@ const Drivers = () => {
                                         return <Flag key ={i} country={flag.alpha_2_code} />
                                     }else if(item.Driver.nationality === "British" && flag.nationality === "British, UK") {
                                         return (<Flag key ={i}country="GB" />)
+                                    }else if(item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
+                                        return (<Flag key ={i}country="NL" />)
                                     }
                                 })}
                                     {item.Driver.givenName} {item.Driver.familyName}</td>

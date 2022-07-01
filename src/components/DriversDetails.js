@@ -82,19 +82,23 @@ const DriversDetails = () => {
                     return (
                         <div key={driver.position}>
                             <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} />
-                            <p>{flagsDetails.map((flag, i) => {
-                                if (driver.Driver.nationality === flag.nationality) {
-                                    return <Flag key={i} country={flag.alpha_2_code} />
-                                } else if (driver.Driver.nationality === "British" && flag.nationality === "British, UK") {
-                                    return (<Flag key={i} country="GB" />)
-                                }
+                            <p>{flagsDetails.map((flag,i) => {
+                                    if (driver.Driver.nationality === flag.nationality) {
+                                        return <Flag key ={i} country={flag.alpha_2_code} />
+                                    }else if(driver.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                        return (<Flag key ={i}country="GB" />)
+                                    }else if(driver.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
+                                        return (<Flag key ={i}country="NL" />)
+                                    }
                             })}</p>
                             <p>{driver.Driver.givenName}</p>
                             <p>{driver.Driver.familyName}</p>
                             <p>{driver.Driver.nationality}</p>
                             <p>{driver.Constructors[0].name}</p>
                             <p>{driver.Driver.dateOfBirth}</p>
-                            <p>Biografy {driver.Driver.url}</p>
+                            <p>
+                                <a href={driver.Driver.url}>Biografy</a>
+                            </p>
                         </div>
                     )
                 })}
