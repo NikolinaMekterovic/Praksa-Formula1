@@ -78,32 +78,32 @@ const TeamsFormula1Results = () => {
     }
 
     return (
-        <div>
-            <table>
+        <div className="divDetails">
+            <div className="leftSide">
                 {formulaDetails.map((item,i) => {
                     return (
-                        <tbody>
-                            <tr key={i}>
-                                <td><img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} /></td>
-                                <td colSpan="2">{item.Constructor.name}</td>
-                                <td>{flagsDetails.map((flag, i) => {
+                        <div>
+                            <div key={i}>
+                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} />
+                                <p>{item.Constructor.name}</p>
+                                <p>{flagsDetails.map((flag, i) => {
                                     if (item.Constructor.nationality === flag.nationality) {
                                         return (<Flag key={i} country={flag.alpha_2_code} />)
                                     } else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
                                         return (<Flag key={i} country="GB" />)
                                     }
                                 })}
-                                </td>
-                                <td>Country:{item.Constructor.nationality}</td>
-                                <td>Position:{item.position}</td>
-                                <td>Points:{item.points}</td>
-                                <td><a href={item.Constructor.url} target="_blank">History</a></td>
-                            </tr>
-                        </tbody>
+                                </p>
+                                <p>Country:{item.Constructor.nationality}</p>
+                                <p>Position:{item.position}</p>
+                                <p>Points:{item.points}</p>
+                                <p><a href={item.Constructor.url} target="_blank">History</a></p>
+                            </div>
+                        </div>
                     );
                 })}
-            </table>
-            <table>
+            </div>
+            <table className="driversTable">
                 <thead>
                     <tr>Formula 1</tr>
                     <tr>

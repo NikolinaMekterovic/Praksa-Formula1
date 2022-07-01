@@ -7,7 +7,7 @@ th {
     text-align: left;
     background-color: gray;
     color: white;
-    font-family: magneto ;
+    font-family: magneto;
 }
 
 .driversTable {
@@ -15,6 +15,7 @@ th {
     border-collapse: collapse;
     text-align: left;
     width: 100%;
+    height: 100vh;
 }
 
 tr {
@@ -28,6 +29,7 @@ tr {
 td {
     border: 1px solid gray;
 }
+
 .td1 {
     background-color: rgb(80, 80, 80);
 }
@@ -58,13 +60,14 @@ td {
     display: block;
     list-style: none;
     padding: 0px;
+    margin: 0;
 }
 
 .navBtn {
     min-width: 150px;
     max-width: 400px;
     font-size: 45px;
-    font-family: magneto ;
+    font-family: magneto;
     cursor: pointer;
     background-color: blue;
 }
@@ -83,8 +86,7 @@ td {
     color: white;
 }
 
-
-.divGlavni{
+.divGlavni {
     display: flex;
 }
 
@@ -95,15 +97,45 @@ td {
 
 body {
     padding-top: 3.4rem;
-  }
+}
 
-  .nav-link {
+.nav-link {
     background-color: blue;
-  }
+}
 
-  .loaderClass {
+.loaderClass {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.divDetails {
+    display: flex;
+    width: 100%;
+}
+
+.leftSide, .doubleTable {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.both {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+   
+}
+.middle, .right {
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.imgFlag {
+    display: flex;
+}
+.imgDetails, .flag{
+    flex-direction: column;
 }

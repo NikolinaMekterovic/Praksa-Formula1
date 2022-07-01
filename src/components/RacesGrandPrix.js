@@ -81,8 +81,8 @@ const GrandPrix = () => {
     }
 
     return (
-        <div>
-            <div>
+        <div className="divDetails">
+            <div className="leftSide">
                 {grandPrix.map(item => {
                     return (
                         <div key={item.Circuit.circuitId}>
@@ -108,77 +108,85 @@ const GrandPrix = () => {
                     )
                 })}
             </div>
-            <h3>Qualifying Results</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pos</th>
-                        <th>Driver</th>
-                        <th>Team</th>
-                        <th>Best Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {qulifyingRaces.map(item => {
-                        let times = []
-                        times.push(item.Q1);
-                        times.push(item.Q2);
-                        times.push(item.Q3);
-                        times.sort();
-                        return (
-                            <tr key={item.position}>
-                                <td>{item.position}</td>
-                                <td>
-                                    {flagsDetails.map((flag, i) => {
-                                        if (item.Driver.nationality === flag.nationality) {
-                                            return <Flag key={i} country={flag.alpha_2_code} />
-                                        } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
-                                            return (<Flag key={i} country="GB" />)
-                                        }
-                                    })}
-                                    {item.Driver.familyName}
-                                </td>
-                                <td>{item.Constructor.name}</td>
-                                <td>{times[0]}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
-            <h3>Race Result</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Pos</td>
-                        <td>Driver</td>
-                        <td>Team</td>
-                        <td>Result</td>
-                        <td>Points</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {resultRaces.map(item => {
-                        return (
-                            <tr key={item.position}>
-                                <td>{item.position}</td>
-                                <td>
-                                    {flagsDetails.map((flag, i) => {
-                                        if (item.Driver.nationality === flag.nationality) {
-                                            return <Flag key={i} country={flag.alpha_2_code} />
-                                        } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
-                                            return (<Flag key={i} country="GB" />)
-                                        }
-                                    })}
-                                    {item.Driver.familyName}
-                                </td>
-                                <td>{item.Constructor.name}</td>
-                                <td>{item?.Time?.time}</td>
-                                <td style={{ "backgroundColor": setColor(item.points) }}>{item.points}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <div className="doubleTable">
+                <div className="both">
+                <table className="middle">
+                    <thead>
+                        <tr>
+                            <td colSpan={4} className="podNaslov">Qualifying Results</td>
+                        </tr>
+                        <tr>
+                            <th>Pos</th>
+                            <th>Driver</th>
+                            <th>Team</th>
+                            <th>Best Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {qulifyingRaces.map(item => {
+                            let times = []
+                            times.push(item.Q1);
+                            times.push(item.Q2);
+                            times.push(item.Q3);
+                            times.sort();
+                            return (
+                                <tr key={item.position}>
+                                    <td>{item.position}</td>
+                                    <td>
+                                        {flagsDetails.map((flag, i) => {
+                                            if (item.Driver.nationality === flag.nationality) {
+                                                return <Flag key={i} country={flag.alpha_2_code} />
+                                            } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                                return (<Flag key={i} country="GB" />)
+                                            }
+                                        })}
+                                        {item.Driver.familyName}
+                                    </td>
+                                    <td>{item.Constructor.name}</td>
+                                    <td>{times[0]}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+                <table className="rightSide">
+                    <thead>
+                        <tr>
+                            <td colSpan={5} className="podNaslov">Race Result</td>
+                        </tr>
+                        <tr>
+                            <td>Pos</td>
+                            <td>Driver</td>
+                            <td>Team</td>
+                            <td>Result</td>
+                            <td>Points</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {resultRaces.map(item => {
+                            return (
+                                <tr key={item.position}>
+                                    <td>{item.position}</td>
+                                    <td>
+                                        {flagsDetails.map((flag, i) => {
+                                            if (item.Driver.nationality === flag.nationality) {
+                                                return <Flag key={i} country={flag.alpha_2_code} />
+                                            } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                                return (<Flag key={i} country="GB" />)
+                                            }
+                                        })}
+                                        {item.Driver.familyName}
+                                    </td>
+                                    <td>{item.Constructor.name}</td>
+                                    <td>{item?.Time?.time}</td>
+                                    <td style={{ "backgroundColor": setColor(item.points) }}>{item.points}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
+                </div>
+            </div>
         </div>
     )
 }
