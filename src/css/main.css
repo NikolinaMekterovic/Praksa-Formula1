@@ -95,6 +95,7 @@ td {
 .td1 {
     background-color: rgb(41, 41, 41);
     vertical-align: top;
+    padding: 0;
 }
 
 .td2 {

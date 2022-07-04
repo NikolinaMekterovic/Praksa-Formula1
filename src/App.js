@@ -15,11 +15,9 @@ const App = () => {
     return (
         <div className="appContainer">
             <Router>
-                <table className="appTableContainer">
-                    <tr>
-                        <td className="td1">
-                            <div>
-                                <h1><img src={require(`./img/F1-2013-Legends-Edition.jpg`).default} /></h1>
+                <div className="appTableContainer">
+                            <div className="td1">
+                                <div><img src={require(`./img/F1-2013-Legends-Edition.jpg`).default} /></div>
                                 <ul>
                                     <li className="navBtn">
                                         <Link to="/" className="lnk" >
@@ -41,9 +39,7 @@ const App = () => {
                                     </li>
                                 </ul>
                             </div>
-                        </td>
-                        <td className="td2">
-                            <div>
+                            <div className="td2">
                                 <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                                     <div className="container-fluid">
                                         <a className="navbar-brand" href="https://f1feederseries.com/">F-1 Feeder</a>
@@ -74,9 +70,7 @@ const App = () => {
                                     <Route path="/teamsForumla1Results" element={<TeamsFormula1Results />}></Route>
                                 </Routes>
                             </div>
-                        </td>
-                    </tr>
-                </table>
+                </div>
             </Router>
         </div>
     )
