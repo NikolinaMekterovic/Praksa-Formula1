@@ -51,12 +51,12 @@ body {
     color: white;
 }
 .tableContainer {
-    margin: 0;
-    padding: 0;
     background-color: gray;
 }
 
 .driversTable {
+    margin: 0;
+    padding: 0;
     border: 20px solid grey;
     border-collapse: collapse;
     border-radius: 8px;
@@ -71,7 +71,7 @@ body {
     font-size: 40px;
     font-family: magneto;
     color: white;
-    text-shadow: 0 0 10px #737373;
+    text-shadow: 0 0 20px #252525;
 }
 
 th {
@@ -119,7 +119,6 @@ td {
     font-weight: 600;
     border: 1px solid gray;
     background-color: rgb(220, 220, 220);
-    padding: 10px;
     color: rgb(80, 80, 80);
 }
 
