@@ -101,7 +101,7 @@ const TeamsFormula1Results = () => {
                                 <p>Country:{item.Constructor.nationality}</p>
                                 <p>Position:{item.position}</p>
                                 <p>Points:{item.points}</p>
-                                <p><a href={item.Constructor.url} target="_blank"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
+                                <p>History: <a href={item.Constructor.url} target="_blank" className="icon"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
                             </div>
                         </div>
                     );

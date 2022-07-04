@@ -108,6 +108,7 @@ td {
 
 .tdr {
     padding-left: 7px;
+    text-decoration: none;
 }
 
 .subTitle {
@@ -134,6 +135,9 @@ td {
     flex-direction: column;
     justify-content: space-between;
     padding: 15px;
+}
+.doubleTable {
+    width: 100%;
 }
 
 .leftSide {
@@ -176,11 +180,12 @@ td {
     flex-direction: column;
 }
 
-.imgDrivers {
+.imgDrivers, .imgTeams {
     width: 150px;
     border-radius: 10px; 
 }
-.imgTeams {
-    width: 150px;
-    border-radius: 10px;
+.icon {
+    text-decoration: none;
+    color: grey;
 }
+
