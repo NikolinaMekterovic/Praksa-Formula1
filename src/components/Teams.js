@@ -58,7 +58,7 @@ const Teams = () => {
                                     })}
                                     {item.Constructor.name}
                                 </td>
-                                <td className="tdr"><a href={item.Constructor.url} target="_blank"></a></td>
+                                <td className="tdr"><a href={item.Constructor.url} target="_blank">Details</a></td>
                                 <td className="tdr">{item.points}</td>
                             </tr>
                         );
