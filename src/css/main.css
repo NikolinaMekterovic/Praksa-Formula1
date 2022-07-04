@@ -64,6 +64,8 @@ body {
 }
 
 .pageTitle {
+    background-color: gray;
+    margin: 0;
     font-weight: bold;
     font-style: italic;
     font-size: 40px;
