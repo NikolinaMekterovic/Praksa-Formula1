@@ -84,7 +84,7 @@ const GrandPrix = () => {
 
     return (
         <div className="divDetails">
-            <div className="leftSide">
+            <div className="leftSideRaces">
                 {grandPrix.map(item => {
                     return (
                         <div key={item.Circuit.circuitId}>

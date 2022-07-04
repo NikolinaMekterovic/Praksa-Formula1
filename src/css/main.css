@@ -71,7 +71,7 @@ body {
     font-size: 40px;
     font-family: magneto;
     color: white;
-    text-shadow: 0 0 20px #252525;
+    text-shadow: 0 0 40px black;
 }
 
 th {
@@ -144,10 +144,16 @@ td {
     padding: 0;
 }
 
-.leftSide {
-    width: 400px;
+.leftSideRaces {
+    width: 18vw;
     color: white;
 }
+
+.leftSide {
+    width: 22vw;
+    color: white;
+}
+
 
 .both {
     width: 100%;
