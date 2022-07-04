@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Flag from 'react-flagkit';
 import Loader from "./Loader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 const TeamsFormula1Results = () => {
@@ -82,26 +82,40 @@ const TeamsFormula1Results = () => {
     return (
         <div className="divDetails">
             <div className="leftSide">
-                {formulaDetails.map((item,i) => {
+                {formulaDetails.map((item, i) => {
                     return (
                         <div>
                             <div key={i}>
-                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgTeams"/>
-                                <div className="flag">
-                                <p>{flagsDetails.map((flag, i) => {
-                                    if (item.Constructor.nationality === flag.nationality) {
-                                        return (<Flag key={i} country={flag.alpha_2_code} />)
-                                    } else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
-                                        return (<Flag key={i} country="GB" />)
-                                    }
-                                })}
-                                </p>
-                                <p>{item.Constructor.name}</p>
+                                <div className="podaci">
+                                    <div className="data1">
+                                        <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgTeams" />
+                                    </div>
+                                    <div className="flag data2">
+                                        <p>{flagsDetails.map((flag, i) => {
+                                            if (item.Constructor.nationality === flag.nationality) {
+                                                return (<Flag key={i} country={flag.alpha_2_code} />)
+                                            } else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
+                                                return (<Flag key={i} country="GB" />)
+                                            }
+                                        })}
+                                        </p>
+                                        <p>{item.Constructor.name}</p>
+                                    </div>
                                 </div>
-                                <p>Country:{item.Constructor.nationality}</p>
-                                <p>Position:{item.position}</p>
-                                <p>Points:{item.points}</p>
-                                <p>History: <a href={item.Constructor.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
+                                <div className="podaci">
+                                    <div className="data3">
+                                        <p>Country:</p>
+                                        <p>Position:</p>
+                                        <p>Points:</p>
+                                        <p>History:</p>
+                                    </div>
+                                    <div className="data4">
+                                        <p>{item.Constructor.nationality}</p>
+                                        <p>{item.position}</p>
+                                        <p>{item.points}</p>
+                                        <p><a href={item.Constructor.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     );
@@ -111,7 +125,7 @@ const TeamsFormula1Results = () => {
                 <thead>
                     <tr>
                         <td colSpan={5} className="subTitle">Formula 1  2013 Results</td>
-                        </tr>
+                    </tr>
                     <tr>
                         <th>Round</th>
                         <th>Grand Prix</th>
@@ -120,7 +134,7 @@ const TeamsFormula1Results = () => {
                         <th>Points</th>
                     </tr>
                 </thead>
-                {formulaResults.map((item,i) => {
+                {formulaResults.map((item, i) => {
                     return (
                         <tbody>
                             <tr key={i}>

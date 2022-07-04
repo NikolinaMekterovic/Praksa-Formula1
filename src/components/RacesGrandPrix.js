@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Loader from "./Loader"
 import Flag from 'react-flagkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 const GrandPrix = () => {
     const [grandPrix, setGrandPrix] = useState([]);
@@ -88,25 +88,40 @@ const GrandPrix = () => {
                 {grandPrix.map(item => {
                     return (
                         <div key={item.Circuit.circuitId}>
-                            <div>{flagsDetails.map((flag, i) => {
-                                if (item.Circuit.Location.country === flag.en_short_name) {
-                                    return <Flag key={i} country={flag.alpha_2_code} />
-                                } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
-                                    return (<Flag key={i} country="GB" />)
-                                } else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
-                                    return (<Flag key={i} country="US" />)
-                                } else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
-                                    return (<Flag key={i} country="KR" />)
-                                } else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
-                                    return (<Flag key={i} country="AE" />)
-                                }
-                            })}</div>
-                            <h3>{item.raceName}</h3>
-                            <p>Country: {item.Circuit.Location.country}</p>
-                            <p>Location:{item.Circuit.Location.locality}</p>
-                            <p>Date:{item.date}</p>
-                            <p>Full report <span><a href={item.Circuit.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></span></p>
+                            <div className="podaci2">
+                                {flagsDetails.map((flag, i) => {
+                                    if (item.Circuit.Location.country === flag.en_short_name) {
+                                        return <Flag key={i} country={flag.alpha_2_code} />
+                                    } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
+                                        return (<Flag key={i} country="GB" />)
+                                    } else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                        return (<Flag key={i} country="US" />)
+                                    } else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                                        return (<Flag key={i} country="KR" />)
+                                    } else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
+                                        return (<Flag key={i} country="AE" />)
+                                    }
+                                })}
+                            </div>
+                            <div>
+                                <h3>{item.raceName}</h3>
+                            </div>
+                            <div className="podaci">
+                                <div className="data5">
+                                    <p>Country:</p>
+                                    <p>Location:</p>
+                                    <p>Date:</p>
+                                    <p>Full report</p>
+                                </div>
+                                <div className="data5">
+                                    <p>{item.Circuit.Location.country}</p>
+                                    <p>{item.Circuit.Location.locality}</p>
+                                    <p>{item.date}</p>
+                                    <p><span><a href={item.Circuit.url} target="_blank"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></span></p>
+                                </div>
+                            </div>
                         </div>
+
                     )
                 })}
             </div>

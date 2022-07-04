@@ -142,14 +142,14 @@ td {
 }
 
 .leftSide {
-    width: 250px;
+    width: 400px;
     color: white;
 }
 
 .both {
     width: 100%;
     display: flex;
-    align-items: stretch;
+    /* align-items: stretch; */
     background-color: gray;  
 }
 
@@ -165,7 +165,8 @@ td {
 
 .imgFlag {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
+    width: 100%;
 }
 .imgDetails, .flag{
     flex-direction: column;
@@ -173,7 +174,6 @@ td {
 
 .imgDetails {
     width: 150px;
-    height: 200px;
     border-radius: 10px; 
 }
 
@@ -194,3 +194,45 @@ td {
     color: white;
 }
 
+.flag {
+    padding: 15px;
+}
+
+.podaci {
+    display: flex;
+    width: 100%;
+}
+
+.data1 {
+    width: 60%;
+    padding: 10px;
+}
+.data2 {
+    width: 40%;
+    padding: 10px;
+}
+
+.data3 {
+    width: 60%;
+    padding: 10px;
+}
+.data4 {
+    width: 40%;
+    padding: 10px;
+}
+
+.podaci2 {
+    display: flex;
+    width: 350px;
+}
+
+img[Attributes ] {
+    height: 70px;
+    aspect-ratio: auto 70 / 70;
+    width: 70px;
+}
+
+.data5 {
+    width: 50%;
+    padding: 10px;
+}

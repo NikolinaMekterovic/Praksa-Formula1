@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import Loader from "./Loader"
 import Flag from 'react-flagkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 
 const DriversDetails = () => {
@@ -85,8 +85,10 @@ const DriversDetails = () => {
                     return (
                         <div key={driver.position}>
                             <div className="imgFlag">
-                                <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} className="imgDrivers"/>
-                                <div className="flag">
+                                <div className="data1">
+                                    <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} className="imgDrivers" />
+                                </div>
+                                <div className="flag data2">
                                     <p>{flagsDetails.map((flag, i) => {
                                         if (driver.Driver.nationality === flag.nationality) {
                                             return <Flag key={i} country={flag.alpha_2_code} />
@@ -100,11 +102,19 @@ const DriversDetails = () => {
                                     <p>{driver.Driver.familyName}</p>
                                 </div>
                             </div>
-                            <div className="data">
-                            <p>Country: {driver.Driver.nationality}</p>
-                            <p>Team: {driver.Constructors[0].name}</p>
-                            <p>Birth: {driver.Driver.dateOfBirth}</p>
-                            <p>Biography: <a href={driver.Driver.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
+                            <div className="podaci">
+                                <div className="data3">
+                                    <p>Country:</p>
+                                    <p>Team:</p>
+                                    <p>Birth:</p>
+                                    <p>Biography:</p>
+                                </div>
+                                <div className="data4">
+                                    <p>{driver.Driver.nationality}</p>
+                                    <p>{driver.Constructors[0].name}</p>
+                                    <p>{driver.Driver.dateOfBirth}</p>
+                                    <p><a href={driver.Driver.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></p>
+                                </div>
                             </div>
                         </div>
                     )
