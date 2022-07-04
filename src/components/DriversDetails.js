@@ -104,7 +104,7 @@ const DriversDetails = () => {
                             <p>Country: {driver.Driver.nationality}</p>
                             <p>Team: {driver.Constructors[0].name}</p>
                             <p>Birth: {driver.Driver.dateOfBirth}</p>
-                            <p>Biography: <a href={driver.Driver.url} target="_blank" className="icon"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
+                            <p>Biography: <a href={driver.Driver.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
                             </div>
                         </div>
                     )

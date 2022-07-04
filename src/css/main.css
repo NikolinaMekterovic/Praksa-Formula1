@@ -138,6 +138,7 @@ td {
 }
 .doubleTable {
     width: 100%;
+    padding: 0;
 }
 
 .leftSide {
@@ -187,5 +188,9 @@ td {
 .icon {
     text-decoration: none;
     color: grey;
+}
+.iconDet {
+    text-decoration: none;
+    color: white;
 }
 
