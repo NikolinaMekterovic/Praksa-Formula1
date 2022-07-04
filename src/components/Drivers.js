@@ -34,7 +34,7 @@ const Drivers = () => {
     }
 
     return (
-        <div className="tableContainer">
+        <div>
             <h1 className="pageTitle">Drivers Championship</h1>
             <table className="driversTable">
                 <thead>

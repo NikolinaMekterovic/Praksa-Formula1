@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Flag from 'react-flagkit';
-import Loader from "./Loader"
+import Loader from "./Loader";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
 
 const Teams = () => {
     const [teamsDetails, setTeams] = useState([]);
@@ -56,7 +58,7 @@ const Teams = () => {
                                     })}
                                     {item.Constructor.name}
                                 </td>
-                                <td className="tdr"><a href={item.Constructor.url} target="_blank">Details</a></td>
+                                <td className="tdr"><a href={item.Constructor.url} target="_blank"></a></td>
                                 <td className="tdr">{item.points}</td>
                             </tr>
                         );

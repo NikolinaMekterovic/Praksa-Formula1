@@ -35,7 +35,7 @@ const Races = () => {
     }
 
     return (
-        <div className="tabeleContainer">
+        <div>
               <h1 className="pageTitle">Race Calendar</h1>
             <table className="driversTable">
                 <thead>

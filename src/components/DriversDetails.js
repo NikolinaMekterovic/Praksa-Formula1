@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Loader from "./Loader"
 import Flag from 'react-flagkit';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
+
 
 const DriversDetails = () => {
     const [details, setDetails] = useState([]);
@@ -82,7 +85,7 @@ const DriversDetails = () => {
                     return (
                         <div key={driver.position}>
                             <div className="imgFlag">
-                                <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} className="imgDetails"/>
+                                <img src={require(`./../img/drivers/${driver.Driver.driverId}.jpg`).default} className="imgDrivers"/>
                                 <div className="flag">
                                     <p>{flagsDetails.map((flag, i) => {
                                         if (driver.Driver.nationality === flag.nationality) {
@@ -101,7 +104,7 @@ const DriversDetails = () => {
                             <p>Country: {driver.Driver.nationality}</p>
                             <p>Team: {driver.Constructors[0].name}</p>
                             <p>Birth: {driver.Driver.dateOfBirth}</p>
-                            <p>Biography: <a href={driver.Driver.url} target="_blank"> Icon</a></p>
+                            <p>Biography: <a href={driver.Driver.url} target="_blank"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
                             </div>
                         </div>
                     )

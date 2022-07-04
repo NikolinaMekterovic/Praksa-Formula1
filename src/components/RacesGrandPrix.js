@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Loader from "./Loader"
 import Flag from 'react-flagkit';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
 
 const GrandPrix = () => {
     const [grandPrix, setGrandPrix] = useState([]);
@@ -103,7 +105,7 @@ const GrandPrix = () => {
                             <p>Country: {item.Circuit.Location.country}</p>
                             <p>Location:{item.Circuit.Location.locality}</p>
                             <p>Date:{item.date}</p>
-                            <p>Full report <span><a href={item.Circuit.url} target="_blank">Link</a></span></p>
+                            <p>Full report <span><a href={item.Circuit.url} target="_blank"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></span></p>
                         </div>
                     )
                 })}

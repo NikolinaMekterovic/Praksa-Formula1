@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import Flag from 'react-flagkit';
-import Loader from "./Loader"
+import Loader from "./Loader";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
 
 
 const TeamsFormula1Results = () => {
@@ -84,7 +86,7 @@ const TeamsFormula1Results = () => {
                     return (
                         <div>
                             <div key={i}>
-                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgDetails"/>
+                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgTeams"/>
                                 <div className="flag">
                                 <p>{flagsDetails.map((flag, i) => {
                                     if (item.Constructor.nationality === flag.nationality) {
@@ -99,7 +101,7 @@ const TeamsFormula1Results = () => {
                                 <p>Country:{item.Constructor.nationality}</p>
                                 <p>Position:{item.position}</p>
                                 <p>Points:{item.points}</p>
-                                <p><a href={item.Constructor.url} target="_blank">History</a></p>
+                                <p><a href={item.Constructor.url} target="_blank"><FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></p>
                             </div>
                         </div>
                     );
