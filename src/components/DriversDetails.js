@@ -97,12 +97,12 @@ const DriversDetails = () => {
                                     <p>{driver.Driver.familyName}</p>
                                 </div>
                             </div>
-                            <p>{driver.Driver.nationality}</p>
-                            <p>{driver.Constructors[0].name}</p>
-                            <p>{driver.Driver.dateOfBirth}</p>
-                            <p>
-                                <a href={driver.Driver.url}>Biografy</a>
-                            </p>
+                            <div className="data">
+                            <p>Country: {driver.Driver.nationality}</p>
+                            <p>Team: {driver.Constructors[0].name}</p>
+                            <p>Birth: {driver.Driver.dateOfBirth}</p>
+                            <p>Biography: <a href={driver.Driver.url} target="_blank"> Icon</a></p>
+                            </div>
                         </div>
                     )
                 })}
@@ -111,7 +111,7 @@ const DriversDetails = () => {
             <table className="driversTable">
                 <thead>
                     <tr>
-                        <td colSpan={5} className="podNaslov">Formula - 1 2013 Results</td>
+                        <td colSpan={5} className="subTitle">Formula - 1 2013 Results</td>
                     </tr>
                     <tr>
                         <th>Round</th>

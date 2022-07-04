@@ -3,64 +3,8 @@
     padding: 0px;
 }
 
-th {
-    text-align: left;
-    background-color: gray;
-    color: white;
-    font-family: magneto;
-}
-
-.driversTable {
-    border: 20px solid grey;
-    border-collapse: collapse;
-    text-align: left;
-    width: 100%;
-    height: 100vh;
-}
-
-tr {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    border: 1px solid gray;
-    background-color: white;
-    color: rgb(80, 80, 80);
-}
-
-td {
-    border: 1px solid gray;
-}
-
-.td1 {
-    background-color: rgb(80, 80, 80);
-}
-
-.td2 {
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    border: 1px solid gray;
-    background-color: gray;
-    color: rgb(80, 80, 80);
-}
-
-.tdr {
-    padding-left: 7px;
-}
-
-.podNaslov {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    border: 1px solid gray;
-    background-color: rgb(220, 220, 220);
-    padding: 10px;
-    color: rgb(80, 80, 80);
-}
-
-.ul {
-    display: block;
-    list-style: none;
-    padding: 0px;
-    margin: 0;
+body {
+    padding-top: 3.4rem;
 }
 
 .navBtn {
@@ -72,9 +16,30 @@ td {
     background-color: blue;
 }
 
+.nav-link {
+    background-color: blue;
+}
+
+.appContainer {
+    display: flex;
+}
+
+.appTableContainer {
+    display: block;
+    width: 100%;
+    background-color: gray;
+}
+
+.appTableContainer ul {
+    display: block;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}
+
 .lnk {
     display: flex;
-    background-color: rgb(82, 82, 82);
+    background-color: rgb(41, 41, 41);
     text-decoration: none;
     color: white;
     padding: 0px;
@@ -82,25 +47,80 @@ td {
 }
 
 .lnk:hover {
-    background-color: black;
+    background-color: rgb(24, 23, 23);
     color: white;
 }
-
-.divGlavni {
-    display: flex;
+.tableContainer {
+    margin: 0;
+    padding: 0;
+    background-color: gray;
 }
 
-.divTabele {
-    display: block;
+.driversTable {
+    border: 20px solid grey;
+    border-collapse: collapse;
+    border-radius: 8px;
+    text-align: left;
     width: 100%;
+    height: 100vh;  
 }
 
-body {
-    padding-top: 3.4rem;
+.pageTitle {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 40px;
+    font-family: magneto;
+    color: white;
+    text-shadow: 0 0 10px #737373;
 }
 
-.nav-link {
-    background-color: blue;
+th {
+    text-align: left;
+    background-color: rgb(220, 220, 220);
+    color: black;
+    padding: 10px;
+}
+
+tr {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border: 1px solid gray;
+    background-color: white;
+    color: rgb(80, 80, 80);
+    
+}
+
+td {
+    border: 1px solid gray;
+    padding: 10px;
+    
+}
+
+.td1 {
+    background-color: rgb(41, 41, 41);
+    vertical-align: top;
+}
+
+.td2 {
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border: 1px solid gray;
+    background-color: rgb(41, 41, 41);
+    color: rgb(80, 80, 80);
+}
+
+.tdr {
+    padding-left: 7px;
+}
+
+.subTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border: 1px solid gray;
+    background-color: rgb(220, 220, 220);
+    padding: 10px;
+    color: rgb(80, 80, 80);
 }
 
 .loaderClass {
@@ -121,21 +141,39 @@ body {
     padding: 15px;
 }
 
+.leftSide {
+    width: 250px;
+    color: white;
+}
+
 .both {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-   
-}
-.middle, .right {
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: stretch;
+    background-color: gray;  
 }
 
+.middle {
+    margin: 10px;
+    flex-grow: 3;
+}
+
+.rightSide {
+    margin: 10px;
+    flex-grow: 4;
+}
 
 .imgFlag {
     display: flex;
+    justify-content: space-between; 
 }
 .imgDetails, .flag{
     flex-direction: column;
 }
+
+.imgDetails {
+    width: 150px;
+    height: 200px;
+    border-radius: 10px; 
+}
+

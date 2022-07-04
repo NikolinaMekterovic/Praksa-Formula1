@@ -35,21 +35,19 @@ const Races = () => {
     }
 
     return (
-        <div className="divTabele">
+        <div className="tabeleContainer">
+              <h1 className="pageTitle">Race Calendar</h1>
             <table className="driversTable">
                 <thead>
-                <tr>
-                        <th colSpan={5}><h1><i>Race Calendar</i></h1></th>
+                    <tr>
+                        <td colSpan={5} className="subTitle">Race Calendar - 2013</td>
                     </tr>
                     <tr>
-                        <td colSpan={5} className="podNaslov">Race Calendar - 2013</td>
-                    </tr>
-                    <tr>
-                        <th className="podNaslov">Round</th>
-                        <th className="podNaslov">Grand Prix</th>
-                        <th className="podNaslov">Circuit</th>
-                        <th className="podNaslov">Date</th>
-                        <th className="podNaslov">Winner</th>
+                        <th>Round</th>
+                        <th>Grand Prix</th>
+                        <th>Circuit</th>
+                        <th>Date</th>
+                        <th>Winner</th>
                     </tr>
                 </thead>
                 <tbody>

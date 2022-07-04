@@ -84,8 +84,8 @@ const TeamsFormula1Results = () => {
                     return (
                         <div>
                             <div key={i}>
-                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} />
-                                <p>{item.Constructor.name}</p>
+                                <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgDetails"/>
+                                <div className="flag">
                                 <p>{flagsDetails.map((flag, i) => {
                                     if (item.Constructor.nationality === flag.nationality) {
                                         return (<Flag key={i} country={flag.alpha_2_code} />)
@@ -94,6 +94,8 @@ const TeamsFormula1Results = () => {
                                     }
                                 })}
                                 </p>
+                                <p>{item.Constructor.name}</p>
+                                </div>
                                 <p>Country:{item.Constructor.nationality}</p>
                                 <p>Position:{item.position}</p>
                                 <p>Points:{item.points}</p>
@@ -105,7 +107,9 @@ const TeamsFormula1Results = () => {
             </div>
             <table className="driversTable">
                 <thead>
-                    <tr>Formula 1</tr>
+                    <tr>
+                        <td colSpan={5} className="subTitle">Formula 1  2013 Results</td>
+                        </tr>
                     <tr>
                         <th>Round</th>
                         <th>Grand Prix</th>
@@ -135,7 +139,7 @@ const TeamsFormula1Results = () => {
                                     })}
                                     {item.raceName}</td>
                                 <td style={{ "backgroundColor": setColor(item.Results[0].position) }}>{item.Results[0].position}</td>
-                                <td style={{ "backgroundColor": setColor(item.Results[0].position) }}>{item.Results[1].position}</td>
+                                <td style={{ "backgroundColor": setColor(item.Results[1].position) }}>{item.Results[1].position}</td>
                                 <td>{parseInt(item.Results[0].points) + parseInt(item.Results[1].points)}</td>
                             </tr>
                         </tbody>

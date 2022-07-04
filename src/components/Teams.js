@@ -32,14 +32,12 @@ const Teams = () => {
     }
     
     return (
-        <div className="divTabele">
+        <div className="tabeleContainer">
+            <h1 className="pageTitle">Constructors Championship</h1>
             <table className="driversTable">
                 <thead>
-                <tr>
-                        <th colSpan={4}><h1><i>Constructors Championship</i></h1></th>
-                    </tr>
                     <tr>
-                        <td colSpan={4} className="podNaslov">Constructor Championship Standings - 2013</td>
+                        <td colSpan={4} className="subTitle">Constructor Championship Standings - 2013</td>
                     </tr>
                 </thead>
                 <tbody>

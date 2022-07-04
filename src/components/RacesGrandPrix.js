@@ -103,88 +103,88 @@ const GrandPrix = () => {
                             <p>Country: {item.Circuit.Location.country}</p>
                             <p>Location:{item.Circuit.Location.locality}</p>
                             <p>Date:{item.date}</p>
-                            <p>Full report <span><a href={item.Circuit.url}>Link</a></span></p>
+                            <p>Full report <span><a href={item.Circuit.url} target="_blank">Link</a></span></p>
                         </div>
                     )
                 })}
             </div>
             <div className="doubleTable">
                 <div className="both">
-                <table className="middle">
-                    <thead>
-                        <tr>
-                            <td colSpan={4} className="podNaslov">Qualifying Results</td>
-                        </tr>
-                        <tr>
-                            <th>Pos</th>
-                            <th>Driver</th>
-                            <th>Team</th>
-                            <th>Best Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {qulifyingRaces.map(item => {
-                            let times = []
-                            times.push(item.Q1);
-                            times.push(item.Q2);
-                            times.push(item.Q3);
-                            times.sort();
-                            return (
-                                <tr key={item.position}>
-                                    <td>{item.position}</td>
-                                    <td>
-                                        {flagsDetails.map((flag, i) => {
-                                            if (item.Driver.nationality === flag.nationality) {
-                                                return <Flag key={i} country={flag.alpha_2_code} />
-                                            } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
-                                                return (<Flag key={i} country="GB" />)
-                                            }
-                                        })}
-                                        {item.Driver.familyName}
-                                    </td>
-                                    <td>{item.Constructor.name}</td>
-                                    <td>{times[0]}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-                <table className="rightSide">
-                    <thead>
-                        <tr>
-                            <td colSpan={5} className="podNaslov">Race Result</td>
-                        </tr>
-                        <tr>
-                            <td>Pos</td>
-                            <td>Driver</td>
-                            <td>Team</td>
-                            <td>Result</td>
-                            <td>Points</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {resultRaces.map(item => {
-                            return (
-                                <tr key={item.position}>
-                                    <td>{item.position}</td>
-                                    <td>
-                                        {flagsDetails.map((flag, i) => {
-                                            if (item.Driver.nationality === flag.nationality) {
-                                                return <Flag key={i} country={flag.alpha_2_code} />
-                                            } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
-                                                return (<Flag key={i} country="GB" />)
-                                            }
-                                        })}
-                                        {item.Driver.familyName}
-                                    </td>
-                                    <td>{item.Constructor.name}</td>
-                                    <td>{item?.Time?.time}</td>
-                                    <td style={{ "backgroundColor": setColor(item.points) }}>{item.points}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                    <table className="middle">
+                        <thead>
+                            <tr>
+                                <td colSpan={4} className="subTitle">Qualifying Results</td>
+                            </tr>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Driver</th>
+                                <th>Team</th>
+                                <th>Best Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {qulifyingRaces.map(item => {
+                                let times = []
+                                times.push(item.Q1);
+                                times.push(item.Q2);
+                                times.push(item.Q3);
+                                times.sort();
+                                return (
+                                    <tr key={item.position}>
+                                        <td>{item.position}</td>
+                                        <td>
+                                            {flagsDetails.map((flag, i) => {
+                                                if (item.Driver.nationality === flag.nationality) {
+                                                    return <Flag key={i} country={flag.alpha_2_code} />
+                                                } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                                    return (<Flag key={i} country="GB" />)
+                                                }
+                                            })}
+                                            {item.Driver.familyName}
+                                        </td>
+                                        <td>{item.Constructor.name}</td>
+                                        <td>{times[0]}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                    <table className="rightSide">
+                        <thead>
+                            <tr>
+                                <td colSpan={5} className="subTitle">Race Result</td>
+                            </tr>
+                            <tr>
+                                <th>Pos</th>
+                                <th>Driver</th>
+                                <th>Team</th>
+                                <th>Result</th>
+                                <th>Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {resultRaces.map(item => {
+                                return (
+                                    <tr key={item.position}>
+                                        <td>{item.position}</td>
+                                        <td>
+                                            {flagsDetails.map((flag, i) => {
+                                                if (item.Driver.nationality === flag.nationality) {
+                                                    return <Flag key={i} country={flag.alpha_2_code} />
+                                                } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                                    return (<Flag key={i} country="GB" />)
+                                                }
+                                            })}
+                                            {item.Driver.familyName}
+                                        </td>
+                                        <td>{item.Constructor.name}</td>
+                                        <td>{item?.Time?.time}</td>
+                                        <td style={{ "backgroundColor": setColor(item.points) }}>{item.points}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

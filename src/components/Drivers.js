@@ -34,14 +34,12 @@ const Drivers = () => {
     }
 
     return (
-        <div className="divTabele">
+        <div className="tableContainer">
+            <h1 className="pageTitle">Drivers Championship</h1>
             <table className="driversTable">
-            <thead>
+                <thead>
                     <tr>
-                        <th colSpan={4}><h1><i>Drivers Championship</i></h1></th>
-                    </tr>
-                    <tr>
-                        <td colSpan={4} className="podNaslov">Drivers Championship Standings - 2013</td>
+                        <td colSpan={4} className="subTitle">Drivers Championship Standings - 2013</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,15 +48,15 @@ const Drivers = () => {
                             <tr key={item.position}>
                                 <td className="tdr">{item.position}</td>
                                 <td className="tdr" onClick={() => { handleClickDetails(item.Driver.driverId) }}>
-                                {flagsDetails.map((flag,i) => {
-                                    if (item.Driver.nationality === flag.nationality) {
-                                        return <Flag key ={i} country={flag.alpha_2_code} />
-                                    }else if(item.Driver.nationality === "British" && flag.nationality === "British, UK") {
-                                        return (<Flag key ={i}country="GB" />)
-                                    }else if(item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
-                                        return (<Flag key ={i}country="NL" />)
-                                    }
-                                })}
+                                    {flagsDetails.map((flag, i) => {
+                                        if (item.Driver.nationality === flag.nationality) {
+                                            return <Flag key={i} country={flag.alpha_2_code} />
+                                        } else if (item.Driver.nationality === "British" && flag.nationality === "British, UK") {
+                                            return (<Flag key={i} country="GB" />)
+                                        } else if (item.Driver.nationality === "Dutch" && flag.nationality === "Dutch, Netherlandic") {
+                                            return (<Flag key={i} country="NL" />)
+                                        }
+                                    })}
                                     {item.Driver.givenName} {item.Driver.familyName}</td>
                                 <td className="tdr">{item.Constructors[0].name}</td>
                                 <td className="tdr">{item.points}</td>
