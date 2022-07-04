@@ -117,7 +117,7 @@ const GrandPrix = () => {
                                     <p>{item.Circuit.Location.country}</p>
                                     <p>{item.Circuit.Location.locality}</p>
                                     <p>{item.date}</p>
-                                    <p><span><a href={item.Circuit.url} target="_blank"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></span></p>
+                                    <p><span><a href={item.Circuit.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></span></p>
                                 </div>
                             </div>
                         </div>
