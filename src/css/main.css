@@ -144,13 +144,8 @@ td {
     padding: 0;
 }
 
-.leftSideRaces {
-    width: 18vw;
-    color: white;
-}
-
 .leftSide {
-    width: 22vw;
+    width: 300px;
     color: white;
 }
 
