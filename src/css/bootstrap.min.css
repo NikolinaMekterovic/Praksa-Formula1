@@ -5105,7 +5105,8 @@ fieldset:disabled .btn {
 
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .show>.nav-link {
-    color: #fff
+    color: #fff;
+    border-radius: 7px
 }
 
 .navbar-dark .navbar-toggler {

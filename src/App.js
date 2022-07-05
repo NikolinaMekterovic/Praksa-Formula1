@@ -7,7 +7,8 @@ import DriversDetails from "./components/DriversDetails";
 import RacesGrandPrix from "./components/RacesGrandPrix";
 import TeamsFormula1Results from "./components/TeamsFormula1Results";
 import canonical from "../src/css/bootstrap.min.css"
-
+import { SearchOutlined } from '@ant-design/icons';
+import { HomeOutlined } from '@ant-design/icons';
 
 
 const App = () => {
@@ -41,7 +42,7 @@ const App = () => {
                 <div className="td2">
                     <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                         <div className="container-fluid">
-                            <a className="navbar-brand" href="https://f1feederseries.com/">F-1 Feeder</a>
+                            <a className="navbar-brand" href="https://f1feederseries.com/">{<HomeOutlined />} F-1 Feeder</a>
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
@@ -55,7 +56,7 @@ const App = () => {
                                 <form className="d-flex">
                                     <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                     </input>
-                                    <button className="btn btn-outline-success" type="submit">Search</button>
+                                    <button className="btn btn-outline-success" type="submit">{<SearchOutlined />}</button>
                                 </form>
                             </div>
                         </div>

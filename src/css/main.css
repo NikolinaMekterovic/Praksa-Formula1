@@ -7,6 +7,31 @@ body {
     padding-top: 3.4rem;
 }
 
+.navbar-brand {
+    background-color: rgb(60 60 60);
+    padding: 5px 10px;
+    border-radius: 7px;
+
+}
+
+.anticon {
+    vertical-align: 0.135em;
+}
+
+.me-2 {
+    background-color: rgb(83, 82, 82);
+    border: 0px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn-outline-success {
+    border: 1px solid black;
+    color: white;
+    padding: 0px;
+    font-size: 30px;
+}
+
 .navBtn {
     min-width: 150px;
     /* max-width: 400px; */
@@ -21,6 +46,13 @@ body {
     background-color: blue;
 }
 
+.nav-link2 {
+    background-color: blue;
+    border-radius: 7px;
+    padding: 11.5px 10px;
+    color: white;
+    text-decoration: none;
+}
 .appContainer {
     display: flex;
     width: 100%;
@@ -49,6 +81,10 @@ body {
     color: black;
 }
 
+.lnk:active {
+    background-color: black;
+}
+
 .tableContainer {
     background-color: gray;
 }
@@ -72,6 +108,7 @@ body {
     font-family: magneto;
     color: white;
     text-shadow: 0 0 40px black;
+    padding: 20px 20px 0px 20px;
 }
 
 th {
@@ -90,7 +127,7 @@ tr {
 }
 
 td {
-    border: 1px solid gray;
+    border: 1px solid  rgb(80, 80, 80);
     padding: 10px;
 }
 
@@ -104,7 +141,7 @@ td {
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
-    border: 1px solid gray;
+    /* border: 1px solid gray; */
     background-color: rgb(41, 41, 41);
     color: rgb(80, 80, 80);
 }
@@ -249,6 +286,10 @@ img[Attributes] {
 .data5 {
     width: 50%;
     padding: 10px;
+}
+
+span {
+    padding: 0 0 0 10px;
 }
 
 @media only screen and (min-width: 481px) and (max-width: 876px) {

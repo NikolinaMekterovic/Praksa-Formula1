@@ -153,7 +153,7 @@ const TeamsFormula1Results = () => {
                                             return (<Flag key={i} country="AE" />)
                                         }
                                     })}
-                                    {item.raceName}</td>
+                                    {<span></span>}{item.raceName}</td>
                                 <td style={{ "backgroundColor": setColor(item.Results[0].position) }}>{item.Results[0].position}</td>
                                 <td style={{ "backgroundColor": setColor(item.Results[1].position) }}>{item.Results[1].position}</td>
                                 <td>{parseInt(item.Results[0].points) + parseInt(item.Results[1].points)}</td>

@@ -69,7 +69,7 @@ const Races = () => {
                                             return (<Flag key={i} country="AE" />)
                                         }
                                     })}
-                                    {item.raceName}
+                                    {<span></span>}{item.raceName}
                                 </td>
                                 <td>{item.Circuit.circuitName}</td>
                                 <td>{item.date}</td>
@@ -81,7 +81,7 @@ const Races = () => {
                                             return (<Flag key={i} country="GB" />)
                                         }
                                     })}
-                                    {item.Results[0].Driver.familyName}
+                                    {<span></span>}{item.Results[0].Driver.familyName}
                                 </td>
                             </tr>
                         );
