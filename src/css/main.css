@@ -22,15 +22,12 @@ body {
 
 .appContainer {
     display: flex;
-}
-
-.appTableContainer {
-    display: flex;
     width: 100%;
     background-color: gray;
 }
 
-.appTableContainer ul {
+
+.appContainer ul {
     display: block;
     list-style: none;
     padding: 0px;
@@ -145,7 +142,7 @@ td {
 }
 
 .leftSide {
-    width: 300px;
+    width: 350px;
     color: white;
 }
 
@@ -208,11 +205,11 @@ td {
 }
 
 .data1 {
-    width: 60%;
+    /* width: 60%; */
     padding: 10px;
 }
 .data2 {
-    width: 40%;
+    /* width: 40%; */
     padding: 10px;
 }
 
@@ -221,7 +218,7 @@ td {
     padding: 10px;
 }
 .data4 {
-    width: 40%;
+    /* width: 40%; */
     padding: 10px;
 }
 
