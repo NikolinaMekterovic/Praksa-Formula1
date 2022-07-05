@@ -16,7 +16,7 @@ const App = () => {
         <div className="appContainer">
             <Router>
                 <div className="td1">
-                    <div><img src={require(`./img/F1-2013-Legends-Edition.jpg`).default} /></div>
+                    <div className="f1Feeder"><img src={require(`./img/F1-2013-Legends-Edition.jpg`).default} /></div>
                     <ul>
                         <li className="navBtn">
                             <Link to="/" className="lnk" >
