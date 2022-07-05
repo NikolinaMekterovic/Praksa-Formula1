@@ -9,11 +9,12 @@ body {
 
 .navBtn {
     min-width: 150px;
-    max-width: 400px;
+    /* max-width: 400px; */
     font-size: 45px;
     font-family: magneto;
     cursor: pointer;
     background-color: blue;
+    text-align: center;
 }
 
 .nav-link {
@@ -44,8 +45,8 @@ body {
 }
 
 .lnk:hover {
-    background-color: rgb(24, 23, 23);
-    color: white;
+    background-color: #fcb900;
+    color: black;
 }
 
 .tableContainer {
