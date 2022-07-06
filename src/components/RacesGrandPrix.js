@@ -41,37 +41,25 @@ const GrandPrix = () => {
     const setColor = (position) => {
         let color = "";
         switch (position) {
-            case "1":
+            case "25":
                 color = "yellow";
                 break;
-            case "2":
+              case "18":
                 color = "gray";
                 break;
-            case "3":
+              case "15":
                 color = "orange";
                 break;
-            case "4":
+              case "12":
+              case "10":
+              case "8":
+              case "6":
+              case "4":
+              case "2":
+              case "1":
                 color = "lightgreen";
                 break;
-            case "5":
-                color = "lightblue";
-                break;
-            case "6":
-                color = "lavender";
-                break;
-            case "7":
-                color = "lightsolmon";
-                break;
-            case "8":
-                color = "lemonchiffon";
-                break;
-            case "9":
-                color = "lightcoral";
-                break;
-            case "10":
-                color = "lightpink";
-                break;
-            default:
+              default:
                 color = "darkgrey";
                 break;
         }
