@@ -16,4 +16,6 @@ const Loader = () => {
     )
 }
 
+
+// Provera promene
 export default Loader;
