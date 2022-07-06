@@ -153,7 +153,7 @@ const DriversDetails = () => {
                                             return (<Flag key={i} country="AE" />)
                                         }
                                     })}
-                                    {item.raceName}
+                                    {<span></span>}{item.raceName}
                                 </td>
                                 <td>{item.Results[0].Constructor.name}</td>
                                 <td>{item.Results[0].grid}</td>

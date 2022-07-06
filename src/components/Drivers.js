@@ -57,7 +57,7 @@ const Drivers = () => {
                                             return (<Flag key={i} country="NL" />)
                                         }
                                     })}
-                                    {item.Driver.givenName} {item.Driver.familyName}</td>
+                                    {<span></span>} {item.Driver.givenName} {item.Driver.familyName}</td>
                                 <td className="tdr">{item.Constructors[0].name}</td>
                                 <td className="tdr">{item.points}</td>
                             </tr>

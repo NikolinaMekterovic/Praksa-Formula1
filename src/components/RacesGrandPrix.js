@@ -145,7 +145,7 @@ const GrandPrix = () => {
                                                     return (<Flag key={i} country="GB" />)
                                                 }
                                             })}
-                                            {item.Driver.familyName}
+                                            {<span></span>}{item.Driver.familyName}
                                         </td>
                                         <td>{item.Constructor.name}</td>
                                         <td>{times[0]}</td>
@@ -180,7 +180,7 @@ const GrandPrix = () => {
                                                     return (<Flag key={i} country="GB" />)
                                                 }
                                             })}
-                                            {item.Driver.familyName}
+                                            {<span></span>}{item.Driver.familyName}
                                         </td>
                                         <td>{item.Constructor.name}</td>
                                         <td>{item?.Time?.time}</td>
