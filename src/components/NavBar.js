@@ -1,15 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
-
+import { useState } from "react";
 
 const NavBar = (props) => {
-console.log(window.location.pathname);
+
+    const [inputText, setInputText] = useState ("");
+
+
+    const handleSearchDetails =() => {
+        props.handleSearch(inputText);
+    }
 
     return(
         <div className="navContainer">
             <div><a href="https://f1feederseries.com/" className="navFeederHome"/>F-1 Feeder</div>
-            <div><Link to="/" className="navCurrentPage" />{props.pageName}</div>
-            <div><input type="search" placeholder="Search" className="navSearch"/></div>
+            <div>
+                <label htmlFor="search-form">
+                    <input 
+                        type="search"
+                        name="search-form"
+                        id="search-form"
+                        className="searchInput"
+                        placeholder="Search..."
+                        value={inputText}
+                        onChange={(e)=>setInputText(e.target.value)}/>
+                    <input type="button" value="Click" onClick={()=>handleSearchDetails(inputText)}/>
+                </label>
+            </div>
             
         </div>
     )

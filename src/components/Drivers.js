@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Flag from "react-flagkit";
 import Loader from "./Loader";
+import NavBar from "./NavBar";
 
 const Drivers = () => {
     const [drivers, setDrivers] = useState([]);
-    const [flagsDetails, setFlags] = useState([])
+    const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,10 +22,22 @@ const Drivers = () => {
         const urlX = await responseUrl.json();
         const flagsX = await responseFlags.json();
         setDrivers(urlX.MRData.StandingsTable.StandingsLists[0].DriverStandings);
-        setFlags(flagsX)
-        setIsLoading(false)
+        setFlags(flagsX);
+        setIsLoading(false);
     }
 
+    
+
+
+    const handleSearch =(textSearch)=>{
+        // console.warn(textSearch);
+        const driversNames = drivers.filter((item)=>{
+            return item.Driver.givenName.indexOf(textSearch) !==-1 || item.Driver.familyName.indexOf(textSearch) !==-1
+        });
+        // console.warn(driversNames);
+        setDrivers(driversNames);
+
+    }
     const handleClickDetails = (driverId) => {
         navigate("/driverDetails", { state: { driverId: driverId } });
     }
@@ -35,6 +48,7 @@ const Drivers = () => {
 
     return (
         <div>
+            <NavBar handleSearch={handleSearch}/>
             <h1 className="pageTitle">Drivers Championship</h1>
             <table className="driversTable">
                 <thead>
