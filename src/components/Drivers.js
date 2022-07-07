@@ -32,12 +32,15 @@ const Drivers = () => {
     }
 
     const handleSearch = (textSearch) => {
-        // console.warn(textSearch);
         const driversNames = drivers.filter((item) => {
-            return item.Driver.givenName.indexOf(textSearch) !== -1 || item.Driver.familyName.indexOf(textSearch) !== -1
+            return item.Driver.givenName.indexOf(textSearch) !== -1 
+            || item.Driver.familyName.indexOf(textSearch) !== -1 
+            || item.Driver.givenName.toLowerCase().indexOf(textSearch) !== -1
+            || item.Driver.familyName.toLowerCase().indexOf(textSearch) !== -1
         });
-        // console.warn(driversNames);
         setDrivers(driversNames);
+        // console.warn(driversNames);
+        // setDrivers(driversNames);
     }
 
     const handleClickDetails = (driverId) => {

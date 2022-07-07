@@ -34,6 +34,9 @@ const Races = () => {
     const handleSearch = (textSearch) => {
         const racesName = racesDetails.filter((item) => {
             return item.raceName.indexOf(textSearch) !== -1
+            || item.raceName.toLowerCase().indexOf(textSearch) !== -1
+            || item.Circuit.circuitName.indexOf(textSearch) !== -1
+            || item.Circuit.circuitName.toLowerCase().indexOf(textSearch) !== -1
         });
         setRaces(racesName);
     }

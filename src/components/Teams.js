@@ -36,6 +36,7 @@ const Teams = () => {
     const handleSearch = (textSearch) => {
         const teamsNames = teamsDetails.filter((item) => {
             return item.Constructor.name.indexOf(textSearch) !== -1
+            || item.Constructor.name.toLowerCase().indexOf(textSearch) !== -1
         });
         setTeams(teamsNames);
     }
