@@ -11,6 +11,7 @@ const Teams = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
+    const [crumbs, setCrumbs] = useState(["Teams", "Details"]);
 
     useEffect(() => {
         addTeams()
@@ -26,6 +27,10 @@ const Teams = () => {
         setTeams(teamsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
         setFlags(flagsX)
         setIsLoading(false)
+    }
+
+    const selected = crumb => {
+        console.log(crumb);
     }
 
     const handleSearch = (textSearch) => {
@@ -44,7 +49,7 @@ const Teams = () => {
 
     return (
         <div className="tabeleContainer">
-            <NavBar handleSearch={handleSearch} />
+            <NavBar handleSearch={handleSearch} crumbs={crumbs} selected={selected} />
             <h1 className="pageTitle">Constructors Championship</h1>
             <table className="driversTable">
                 <thead>

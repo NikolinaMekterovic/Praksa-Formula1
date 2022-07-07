@@ -9,6 +9,7 @@ const Races = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
+    const [crumbs, setCrumbs] = useState(["Races", "Details"]);
 
     useEffect(() => {
         addRaces()
@@ -24,6 +25,10 @@ const Races = () => {
         setRaces(racesX.MRData.RaceTable.Races);
         setFlags(flagsX);
         setIsLoading(false)
+    }
+
+    const selected = crumb => {
+        console.log(crumb);
     }
 
     const handleSearch = (textSearch) => {
@@ -43,7 +48,7 @@ const Races = () => {
 
     return (
         <div>
-            <NavBar handleSearch={handleSearch} />
+            <NavBar handleSearch={handleSearch} crumbs={crumbs} selected={selected}/>
             <h1 className="pageTitle">Race Calendar</h1>
             <table className="driversTable driversTableRaces">
                 <thead>
