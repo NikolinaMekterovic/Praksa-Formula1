@@ -8,13 +8,17 @@ const NavBar = (props) => {
     const [inputText, setInputText] = useState("");
 
 
-    const handleSearchDetails = () => {
-        props.handleSearch(inputText);
-        setInputText("");
-    }
+    // const handleSearchDetails = () => {
+    //     props.handleSearch(inputText);
+    //     setInputText("");
+    // }
 
     const isLast = (index) => {
         return index === props.breadCrumb.length - 1;
+    }
+    const handleChangeInputValue = (e) => {
+        setInputText(e.target.value);
+        props.handleSearch(inputText);
     }
 
     return (
@@ -43,8 +47,8 @@ const NavBar = (props) => {
                         className="searchInput"
                         placeholder="Search..."
                         value={inputText}
-                        onChange={(e) => setInputText(e.target.value)} />
-                    <input type="button" value="Click" onClick={() => handleSearchDetails(inputText)} />
+                        onChange={handleChangeInputValue} />
+                    {/* <input type="button" value="Click" onClick={() => handleSearchDetails(inputText)} /> */}
                 </label>
             </div>
 

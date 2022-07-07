@@ -11,7 +11,11 @@ const Drivers = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        addDrivers()
+        addDrivers() 
+        return () => {
+            // setDrivers(drivers)
+            console.warn(drivers)
+        }
     }, [])
 
     const addDrivers = async () => {
