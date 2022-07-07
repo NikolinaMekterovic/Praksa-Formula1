@@ -1,11 +1,10 @@
+/*
+
 * {
     margin: 0px;
     padding: 0px;
 }
 
-body {
-    /* padding-top: 3.4rem; */
-}
 
 .navbar-brand {
     background-color: rgb(60 60 60);
@@ -34,7 +33,6 @@ body {
 
 .navBtn {
     min-width: 150px;
-    /* max-width: 400px; */
     font-size: 45px;
     font-family: magneto;
     cursor: pointer;
@@ -141,7 +139,6 @@ td {
     width: 100%;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 600;
-    /* border: 1px solid gray; */
     background-color: rgb(41, 41, 41);
     color: rgb(80, 80, 80);
 }
@@ -192,7 +189,6 @@ td {
 .both {
     width: 100%;
     display: flex;
-    /* align-items: stretch; */
     background-color: gray;
 }
 
@@ -253,12 +249,10 @@ td {
 }
 
 .data1 {
-    /* width: 60%; */
     padding: 10px;
 }
 
 .data2 {
-    /* width: 40%; */
     padding: 10px;
 }
 
@@ -268,7 +262,6 @@ td {
 }
 
 .data4 {
-    /* width: 40%; */
     padding: 10px;
 }
 
@@ -293,18 +286,6 @@ span {
 }
 
 @media only screen and (min-width: 481px) and (max-width: 876px) {
-    /* .appContainer {
-        width: 100vw;
-    }
-
-    .appTableContainer {
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        display: flex;
-        flex-flow: row wrap;
-    } */
 
     .appContainer {
         flex-direction: column;
@@ -384,38 +365,415 @@ span {
         text-align: center;
     }
 }
-/* @media screen and (max-width:650px) {
+*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: rgb (41, 41, 41);
+}
+
+.navbar-brand {
+    background-color: rgb(60 60 60);
+    padding: 5px 10px;
+    border-radius: 7px;
+}
+
+.anticon {
+    vertical-align: 0.135em;
+}
+
+.me-2 {
+    background-color: rgb(83, 82, 82);
+    border: 0px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.btn-outline-success {
+    outline-color: black;
+    border: 1px solid black;
+    color: white;
+    padding: 0px;
+    font-size: 30px;
+}
+
+.btn-outline-success:hover {
+    color: white;
+    background-color: #fcb900;
+}
+
+.navBtn {
+    min-width: 150px;
+    font-size: 35px;
+    font-family: magneto;
+    cursor: pointer;
+}
+
+.nav-link2 {
+    background-color: blue;
+    border-radius: 7px;
+    padding: 11.5px 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-link2:hover {
+    background-color: #fcb900;
+    color: black;
+}
+
+.appContainer {
+    display: flex;
+    background-color: rgb(41, 41, 41);
+}
+
+.appTableContainer {
+    min-height: 100vh;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(41, 41, 41);
+}
+
+.appTableContainer ul {
+    display: block;
+    list-style: none;
+    padding: 0px;
+    margin: 0;
+}
+
+.lnk {
+    display: block;
+    background-color: rgb(41, 41, 41);
+    text-decoration: none;
+    color: white;
+    padding: 0px;
+    margin: 0px;
+}
+
+.lnk:hover {
+    background-color: #fcb900;
+    color: rgb(81, 81, 81);
+}
+
+.lnk:focus {
+    background-color: black;
+}
+
+.navbar-brand:hover {
+    background-color: #fcb900;
+    color: black;
+}
+
+.active {
+    background-color: black;
+}
+
+.tableContainer {
+    background-color: gray;
+}
+
+.driversTable {
+    margin: 0;
+    border: 20px solid grey;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+    height: 100vh;
+}
+
+.pageTitle {
+    background-color: gray;
+    margin: 0;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 40px;
+    font-family: magneto;
+    color: white;
+    text-shadow: 0 0 40px black;
+    padding: 20px 20px 0px 20px;
+}
+
+th {
+    text-align: left;
+    background-color: rgb(220, 220, 220);
+    color: black;
+    padding: 10px;
+}
+
+tr {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border: 1px solid gray;
+    background-color: white;
+    color: rgb(80, 80, 80);
+}
+
+td {
+    border: 1px solid rgb(80, 80, 80);
+    padding: 10px;
+}
+
+.td1 {
+    background-color: rgb(41, 41, 41);
+    vertical-align: top;
+    padding: 0;
+    height: 100%;
+}
+
+.td2 {
+    width: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    background-color: rgb(41, 41, 41);
+    color: rgb(80, 80, 80);
+}
+
+.tdr {
+    padding-left: 7px;
+    text-decoration: none;
+}
+
+.subTitle {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    border: 1px solid gray;
+    background-color: rgb(220, 220, 220);
+    color: rgb(80, 80, 80);
+}
+
+.loaderClass {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divDetails {
+    display: flex;
+    width: 100%;
+    background-color: rgb(41, 41, 41);
+}
+
+.leftSide,
+.doubleTable {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+.doubleTable {
+    width: 100%;
+    padding: 0;
+}
+
+.leftSide {
+    width: 400px;
+    color: white;
+}
+
+.both {
+    width: 100%;
+    display: flex;
+    background-color: gray;
+    padding: 15px 10px 10px 10px;
+}
+
+.middle {
+    margin: 10px;
+    flex-grow: 3;
+}
+
+.rightSide {
+    margin: 10px;
+    flex-grow: 4;
+}
+
+.imgFlag {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.imgDetails,
+.flag {
+    flex-direction: column;
+}
+
+.imgDetails {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.imgDrivers,
+.flag {
+    flex-direction: column;
+}
+
+.imgDrivers,
+.imgTeams {
+    width: 150px;
+    border-radius: 10px;
+}
+
+.icon {
+    text-decoration: none;
+    color: grey;
+}
+
+.iconDet {
+    text-decoration: none;
+    color: white;
+}
+
+.flag {
+    padding: 15px;
+}
+
+.podaci {
+    display: flex;
+    width: 100%;
+}
+
+.data1 {
+    width: 60%;
+    padding: 10px;
+}
+
+.data2 {
+    width: 40%;
+    padding: 10px;
+}
+
+.data3 {
+    width: 60%;
+    padding: 10px;
+}
+
+.data4 {
+    width: 40%;
+    padding: 10px;
+}
+
+.podaci2 {
+    display: flex;
+    width: 350px;
+}
+
+img[Attributes] {
+    height: 70px;
+    aspect-ratio: auto 70 / 70;
+    width: 70px;
+}
+
+.data5 {
+    width: 50%;
+    padding: 10px;
+}
+
+span {
+    padding: 0 0 0 10px;
+}
+
+@media only screen and (max-width: 1750px) {
+    .divDetails {
+        flex-direction: column;
+        width: 100%;
+        background-color: rgb(41, 41, 41);
+    }
+
+    .appTableContainer {
+        min-height: 100vh;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(41, 41, 41);
+    }
+}
+
+@media only screen and (min-width: 1360px) and (max-width: 1750px) {
+    .divDetails {
+        flex-direction: column;
+        width: 100%;
+        background-color: rgb(41, 41, 41);
+    }
+
+    .appContainer {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+
+    .appTableContainer {
+        min-height: 100vh;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(41, 41, 41);
+    }
+
+    .both {
+        flex-wrap: wrap;
+    }
+}
+
+
+@media only screen and (min-width: 900px) and (max-width: 1360px) {
     .appContainer {
         flex-direction: column;
     }
 
     .appContainer {
         width: 100%;
-        padding: 7px;
+        padding: 0;
     }
 
-    .navBtn {
-        min-width: 150px;
-        margin: 0 auto;
-        font-size: 45px;
-        font-family: magneto;
-        cursor: pointer;
-    }
-
-    .f1Feeder img {
+    .appTableContainer appTableContainer2 {
+        min-height: 100vh;
+        display: table-column;
         width: 100%;
+        height: 100%;
+        background-color: rgb(41, 41, 41);
     }
 
-    .lnk {
-        display: block;
+    .navbar-expand-md {
+        flex-wrap: wrap;
+        justify-content: flex-start;
     }
 
-} */
+    .both {
+        flex-wrap: wrap;
+    }
+}
 
-/* @media screen and (max-width: 400px) {
+@media only screen and (min-width: 400px) and (max-width: 900px) {
+    .appTableContainer.appTableContainer2.appTableContainer3 {
+        min-height: 100vh;
+        display: table-column;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(41, 41, 41);
+    }
+
+    .navbar.navbar-expand-md {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
     .appContainer {
-        font-size: 0.7rem;
-        height: 150px;
+        flex-direction: column; 
+        flex-wrap: wrap;
+        width: 100%;
+        padding: 0;
     }
 
-} */
+    .center {
+        text-align: center;
+    }
+    .both {
+        flex-wrap: wrap;
+    }
+}
