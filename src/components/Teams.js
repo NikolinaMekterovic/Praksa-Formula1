@@ -52,38 +52,40 @@ const Teams = () => {
     const breadCrumb = [{title:"Teams", url:"/teams"}];
 
     return (
-        <div className="tabeleContainer">
+        <div>
             <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} />
-            <h1 className="pageTitle">Constructors Championship</h1>
-            <table className="driversTable">
-                <thead>
-                    <tr>
-                        <td colSpan={4} className="subTitle">Constructor Championship Standings - 2013</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {teamsDetails.map(item => {
-                        return (
-                            <tr key={item.Constructor.constructorId}>
-                                <td className="tdr">{item.position}</td>
-                                <td className="tdr" onClick={() => { handleClickDetails(item.Constructor.constructorId) }}>
-                                    {flagsDetails.map((flag, i) => {
-                                        if (item.Constructor.nationality === flag.nationality) {
-                                            return <Flag key={i} country={flag.alpha_2_code} />
-                                        }
-                                        else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
-                                            return (<Flag key={i} country="GB" />)
-                                        }
-                                    })}
-                                    {<span></span>}{item.Constructor.name}
-                                </td>
-                                <td className="tdr"><a href={item.Constructor.url} target="_blank" className="icon">Details <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></td>
-                                <td className="tdr">{item.points}</td>
+                <div className="tabeleContainer">
+                    <h1 className="pageTitle">Constructors Championship</h1>
+                    <table className="driversTable">
+                        <thead>
+                            <tr>
+                                <td colSpan={4} className="subTitle">Constructor Championship Standings - 2013</td>
                             </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                        </thead>
+                        <tbody>
+                            {teamsDetails.map(item => {
+                                return (
+                                    <tr key={item.Constructor.constructorId}>
+                                        <td className="tdr">{item.position}</td>
+                                        <td className="tdr" onClick={() => { handleClickDetails(item.Constructor.constructorId) }}>
+                                            {flagsDetails.map((flag, i) => {
+                                                if (item.Constructor.nationality === flag.nationality) {
+                                                    return <Flag key={i} country={flag.alpha_2_code} />
+                                                }
+                                                else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
+                                                    return (<Flag key={i} country="GB" />)
+                                                }
+                                            })}
+                                            {<span></span>}{item.Constructor.name}
+                                        </td>
+                                        <td className="tdr"><a href={item.Constructor.url} target="_blank" className="icon">Details <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></td>
+                                        <td className="tdr">{item.points}</td>
+                                    </tr>
+                                );
+                            })}
+                        </tbody>
+                    </table>
+                </div>
         </div>
     )
 }

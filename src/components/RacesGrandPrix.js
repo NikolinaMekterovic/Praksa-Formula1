@@ -76,8 +76,9 @@ const GrandPrix = () => {
                 ]
 
     return (
-        <div className="divDetails">
+        <div>
             <NavBar breadCrumb={breadCrumb}/> 
+        <div className="divDetails">
             <div className="leftSide">
                 {grandPrix.map(item => {
                     return (
@@ -198,6 +199,7 @@ const GrandPrix = () => {
                     </table>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

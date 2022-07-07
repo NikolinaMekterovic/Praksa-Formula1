@@ -13,8 +13,6 @@ const Drivers = () => {
 
     useEffect(() => {
         addDrivers() 
-        return () => {
-        }
     }, [])
 
     const addDrivers = async () => {

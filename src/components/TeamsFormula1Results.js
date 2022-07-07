@@ -85,8 +85,9 @@ const TeamsFormula1Results = () => {
                 ]
 
     return (
-        <div className="divDetails">
+        <div>
              <NavBar breadCrumb={breadCrumb}/>
+        <div className="divDetails">
             <div className="leftSide">
                 {formulaDetails.map((item, i) => {
                     return (
@@ -168,6 +169,7 @@ const TeamsFormula1Results = () => {
                     );
                 })}
             </table>
+        </div>
         </div>
     );
 }
