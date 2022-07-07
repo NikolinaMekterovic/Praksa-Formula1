@@ -4,6 +4,7 @@ import Loader from "./Loader"
 import Flag from 'react-flagkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import NavBar from "./NavBar";
 
 const GrandPrix = () => {
     const [grandPrix, setGrandPrix] = useState([]);
@@ -70,8 +71,13 @@ const GrandPrix = () => {
         return (<Loader size={70} color="green" />)
     }
 
+    const breadCrumb = [{title: "Races", url:"/races"},
+                    {title: grandPrix[0].raceName, url:"/racesGrandPrix"}
+                ]
+
     return (
         <div className="divDetails">
+            <NavBar breadCrumb={breadCrumb}/> 
             <div className="leftSide">
                 {grandPrix.map(item => {
                     return (

@@ -9,7 +9,6 @@ const Races = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [crumbs, setCrumbs] = useState(["Races", "Details"]);
 
     useEffect(() => {
         addRaces()
@@ -45,13 +44,16 @@ const Races = () => {
         navigate("/racesGrandPrix", { state: { circuitId: circuitId } });
     }
 
+    
     if (isLoading) {
         return (<Loader size={70} color="green" />)
     }
+    
+    const breadCrumb = [{title:"Races", url:"/races"}];
 
     return (
         <div>
-            <NavBar handleSearch={handleSearch} crumbs={crumbs} selected={selected}/>
+            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} selected={selected}/>
             <h1 className="pageTitle">Race Calendar</h1>
             <table className="driversTable driversTableRaces">
                 <thead>

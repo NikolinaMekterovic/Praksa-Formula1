@@ -4,6 +4,7 @@ import Flag from 'react-flagkit';
 import Loader from "./Loader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import NavBar from "./NavBar";
 
 
 const TeamsFormula1Results = () => {
@@ -79,8 +80,13 @@ const TeamsFormula1Results = () => {
         return (<Loader size={70} color="green" />)
     }
 
+    const breadCrumb = [{title: "Teams", url:"/teams"},
+                    {title: formulaDetails[0].Constructor.name, url:"/teamsForumla1Results"}
+                ]
+
     return (
         <div className="divDetails">
+             <NavBar breadCrumb={breadCrumb}/>
             <div className="leftSide">
                 {formulaDetails.map((item, i) => {
                     return (

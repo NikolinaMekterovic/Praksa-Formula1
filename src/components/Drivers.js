@@ -9,7 +9,7 @@ const Drivers = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [crumbs, setCrumbs] = useState(["Drivers", "Details"]);
+    const [crumbs, setCrumbs] = useState(["Drivers", "/"]);
 
     useEffect(() => {
         addDrivers()
@@ -51,9 +51,11 @@ const Drivers = () => {
         return (<Loader />)
     }
 
+    const breadCrumb = [{title:"Drivers", url:"/"}];
+
     return (
         <div>
-            <NavBar handleSearch={handleSearch} crumbs={crumbs} selected={selected} />
+            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} selected={selected} />
             <h1 className="pageTitle">Drivers Championship</h1>
             <table className="driversTable">
                 <thead>

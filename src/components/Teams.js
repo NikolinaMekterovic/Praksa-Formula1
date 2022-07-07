@@ -11,7 +11,7 @@ const Teams = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [crumbs, setCrumbs] = useState(["Teams", "Details"]);
+    const [crumbs, setCrumbs] = useState(["Teams", "/teams"]);
 
     useEffect(() => {
         addTeams()
@@ -48,9 +48,11 @@ const Teams = () => {
         return (<Loader size={70} color="green" />)
     }
 
+    const breadCrumb = [{title:"Teams", url:"/teams"}];
+
     return (
         <div className="tabeleContainer">
-            <NavBar handleSearch={handleSearch} crumbs={crumbs} selected={selected} />
+            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} selected={selected} />
             <h1 className="pageTitle">Constructors Championship</h1>
             <table className="driversTable">
                 <thead>

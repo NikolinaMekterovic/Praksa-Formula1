@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { HomeOutlined } from '@ant-design/icons';
+import {Link} from "react-router-dom";
 
 const NavBar = (props) => {
 
@@ -19,24 +20,21 @@ const NavBar = (props) => {
     return (
         <div className="navContainer">
             <a href="https://f1feederseries.com/" target="_blank" className="navFeederHome">{<HomeOutlined />} F-1 Feeder</a>
-            <div>
-                <nav>
-                    <ol>
-                        {props.crumbs.map((crumb, i) => {
-                            const disabled = isLast(i) ? "disabled" : "";
-                            return (
-                                <li
-                                    key={i}>
-                                    <button className={`${disabled}`} 
-                                    onClick={() => props.selected(crumb)}>
-                                        {crumb}
-                                    </button>
-                                </li>
-                            )
-                        })}
-                    </ol>
-                </nav>
-            </div>
+    
+
+            <nav className="top-nav">
+                <ul className="breadcrumb">
+                    {/* <Link to="/">Home</Link> */}
+                    {props.breadCrumb.map((crumb, i) => {
+                        return (
+                            <li key={i}>
+                                <Link to={crumb.url}>{crumb.title}</Link>
+                            </li>
+                        );
+                    })
+                    }
+                </ul>
+            </nav>
             <div>
                 <label htmlFor="search-form">
                     <input

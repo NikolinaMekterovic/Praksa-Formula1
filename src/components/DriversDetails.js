@@ -4,6 +4,7 @@ import Loader from "./Loader"
 import Flag from 'react-flagkit';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import NavBar from "./NavBar";
 
 
 const DriversDetails = () => {
@@ -78,8 +79,13 @@ const DriversDetails = () => {
         return (<Loader size={70} color="green" />)
     }
 
+    const breadCrumb = [{title: "Drivers", url:"/"},
+                    {title: details[0].Driver.givenName + " " + details[0].Driver.familyName, url:"/driverDetails"}
+                ]
+    
     return (
         <div className="divDetails">
+            <NavBar breadCrumb={breadCrumb}/>
             <div className="leftSide">
                 {details.map(driver => {
                     return (
