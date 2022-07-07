@@ -6,6 +6,7 @@ import NavBar from "./NavBar";
 
 const Drivers = () => {
     const [drivers, setDrivers] = useState([]);
+    const [results, setResults] = useState([]);
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
@@ -13,8 +14,6 @@ const Drivers = () => {
     useEffect(() => {
         addDrivers() 
         return () => {
-            // setDrivers(drivers)
-            console.warn(drivers)
         }
     }, [])
 
@@ -26,6 +25,7 @@ const Drivers = () => {
         const urlX = await responseUrl.json();
         const flagsX = await responseFlags.json();
         setDrivers(urlX.MRData.StandingsTable.StandingsLists[0].DriverStandings);
+        setResults(urlX.MRData.StandingsTable.StandingsLists[0].DriverStandings);
         setFlags(flagsX);
         setIsLoading(false);
     }
@@ -35,15 +35,13 @@ const Drivers = () => {
     // }
 
     const handleSearch = (textSearch) => {
-        const driversNames = drivers.filter((item) => {
+        const driversNames = results.filter((item) => {
             return item.Driver.givenName.indexOf(textSearch) !== -1 
             || item.Driver.familyName.indexOf(textSearch) !== -1 
             || item.Driver.givenName.toLowerCase().indexOf(textSearch) !== -1
             || item.Driver.familyName.toLowerCase().indexOf(textSearch) !== -1
         });
         setDrivers(driversNames);
-        // console.warn(driversNames);
-        // setDrivers(driversNames);
     }
 
     const handleClickDetails = (driverId) => {

@@ -6,7 +6,7 @@ import NavBar from "./NavBar";
 
 const Races = () => {
     const [racesDetails, setRaces] = useState([]);
-    const [racesDetailsNew, setRacesNew] = useState([]);
+    const [results, setResults] = useState([]);
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
@@ -23,6 +23,7 @@ const Races = () => {
         const racesX = await responseRaces.json();
         const flagsX = await responseFlags.json();
         setRaces(racesX.MRData.RaceTable.Races);
+        setResults(racesX.MRData.RaceTable.Races);
         setFlags(flagsX);
         setIsLoading(false)
     }
@@ -32,23 +33,34 @@ const Races = () => {
     // }
 
     const handleSearch = (textSearch) => {
-        if (textSearch === "") {
-            return setRacesNew(racesDetailsNew)
-        } else {
-            const racesName = racesDetails.filter(
-                (item) =>
-                    item.raceName
-                        .toLowerCase()
-                        .includes(textSearch.toLowerCase()) ||
-                    item.Circuit.circuitName
-                        .toLowerCase()
-                        .includes(textSearch.toLowerCase()) 
-           )
-           setRaces(racesName)
-           
-        } 
-        console.log("racesDetails", racesDetails)
+        const racesNames = results.filter((item) => {
+            return item.raceName.indexOf(textSearch) !== -1
+            || item.raceName.toLowerCase().indexOf(textSearch) !== -1
+            || item.Circuit.circuitName.indexOf(textSearch) !== -1
+            || item.Circuit.circuitName.toLowerCase().indexOf(textSearch) !== -1
+        });
+        setRaces(racesNames);
     }
+
+
+    // const handleSearch = (textSearch) => {
+    //     if (textSearch === "") {
+    //         return setRacesNew(racesDetailsNew)
+    //     } else {
+    //         const racesName = racesDetails.filter(
+    //             (item) =>
+    //                 item.raceName
+    //                     .toLowerCase()
+    //                     .includes(textSearch.toLowerCase()) ||
+    //                 item.Circuit.circuitName
+    //                     .toLowerCase()
+    //                     .includes(textSearch.toLowerCase()) 
+    //        )
+    //        setRaces(racesName)
+           
+    //     } 
+    //     console.log("racesDetails", racesDetails)
+    // }
 
     const handleClickDetails = (circuitId) => {
         navigate("/racesGrandPrix", { state: { circuitId: circuitId } });

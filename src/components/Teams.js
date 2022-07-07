@@ -8,6 +8,7 @@ import NavBar from "./NavBar";
 
 const Teams = () => {
     const [teamsDetails, setTeams] = useState([]);
+    const [results, setResults] = useState([]);
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
@@ -24,6 +25,7 @@ const Teams = () => {
         const teamsX = await responseTeams.json();
         const flagsX = await responseFlags.json();
         setTeams(teamsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
+        setResults(teamsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
         setFlags(flagsX)
         setIsLoading(false)
     }
@@ -33,7 +35,7 @@ const Teams = () => {
     // }
 
     const handleSearch = (textSearch) => {
-        const teamsNames = teamsDetails.filter((item) => {
+        const teamsNames = results.filter((item) => {
             return item.Constructor.name.indexOf(textSearch) !== -1
             || item.Constructor.name.toLowerCase().indexOf(textSearch) !== -1
         });
