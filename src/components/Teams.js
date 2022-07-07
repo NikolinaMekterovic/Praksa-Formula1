@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import Flag from 'react-flagkit';
 import Loader from "./Loader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUpRightFromSquare} from '@fortawesome/free-solid-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import NavBar from "./NavBar";
 
 const Teams = () => {
     const [teamsDetails, setTeams] = useState([]);
@@ -14,6 +15,7 @@ const Teams = () => {
     useEffect(() => {
         addTeams()
     }, [])
+    
     const addTeams = async () => {
         const urlTeams = "http://ergast.com/api/f1/2013/constructorStandings.json";
         const urlFlags = "https://raw.githubusercontent.com/Dinuks/country-nationality-list/master/countries.json"
@@ -26,15 +28,23 @@ const Teams = () => {
         setIsLoading(false)
     }
 
+    const handleSearch = (textSearch) => {
+        const teamsNames = teamsDetails.filter((item) => {
+            return item.Constructor.name.indexOf(textSearch) !== -1
+        });
+        setTeams(teamsNames);
+    }
+
     const handleClickDetails = (constructorId) => {
         navigate("/teamsForumla1Results", { state: { constructorId: constructorId } });
     }
     if (isLoading) {
         return (<Loader size={70} color="green" />)
     }
-    
+
     return (
         <div className="tabeleContainer">
+            <NavBar handleSearch={handleSearch} />
             <h1 className="pageTitle">Constructors Championship</h1>
             <table className="driversTable">
                 <thead>
@@ -58,7 +68,7 @@ const Teams = () => {
                                     })}
                                     {<span></span>}{item.Constructor.name}
                                 </td>
-                                <td className="tdr"><a href={item.Constructor.url} target="_blank" className="icon">Details <FontAwesomeIcon icon={faArrowUpRightFromSquare}/></a></td>
+                                <td className="tdr"><a href={item.Constructor.url} target="_blank" className="icon">Details <FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></td>
                                 <td className="tdr">{item.points}</td>
                             </tr>
                         );

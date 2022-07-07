@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import Flag from 'react-flagkit';
 import Loader from "./Loader";
-
+import NavBar from "./NavBar";
 
 const Races = () => {
     const [racesDetails, setRaces] = useState([]);
@@ -26,6 +26,13 @@ const Races = () => {
         setIsLoading(false)
     }
 
+    const handleSearch = (textSearch) => {
+        const racesName = racesDetails.filter((item) => {
+            return item.raceName.indexOf(textSearch) !== -1
+        });
+        setRaces(racesName);
+    }
+
     const handleClickDetails = (circuitId) => {
         navigate("/racesGrandPrix", { state: { circuitId: circuitId } });
     }
@@ -36,7 +43,8 @@ const Races = () => {
 
     return (
         <div>
-              <h1 className="pageTitle">Race Calendar</h1>
+            <NavBar handleSearch={handleSearch} />
+            <h1 className="pageTitle">Race Calendar</h1>
             <table className="driversTable driversTableRaces">
                 <thead>
                     <tr>
@@ -61,11 +69,11 @@ const Races = () => {
                                             return <Flag key={i} country={flag.alpha_2_code} />
                                         } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
                                             return (<Flag key={i} country="GB" />)
-                                        }else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                        } else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
                                             return (<Flag key={i} country="US" />)
-                                        }else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                                        } else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
                                             return (<Flag key={i} country="KR" />)
-                                        }else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
+                                        } else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
                                             return (<Flag key={i} country="AE" />)
                                         }
                                     })}

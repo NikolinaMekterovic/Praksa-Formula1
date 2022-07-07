@@ -9,6 +9,7 @@ const Drivers = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
+    const [crumbs, setCrumbs] = useState(["Drivers", "Details"]);
 
     useEffect(() => {
         addDrivers()
@@ -26,18 +27,19 @@ const Drivers = () => {
         setIsLoading(false);
     }
 
-    
+    const selected = crumb => {
+        console.log(crumb);
+    }
 
-
-    const handleSearch =(textSearch)=>{
+    const handleSearch = (textSearch) => {
         // console.warn(textSearch);
-        const driversNames = drivers.filter((item)=>{
-            return item.Driver.givenName.indexOf(textSearch) !==-1 || item.Driver.familyName.indexOf(textSearch) !==-1
+        const driversNames = drivers.filter((item) => {
+            return item.Driver.givenName.indexOf(textSearch) !== -1 || item.Driver.familyName.indexOf(textSearch) !== -1
         });
         // console.warn(driversNames);
         setDrivers(driversNames);
-
     }
+
     const handleClickDetails = (driverId) => {
         navigate("/driverDetails", { state: { driverId: driverId } });
     }
@@ -48,7 +50,7 @@ const Drivers = () => {
 
     return (
         <div>
-            <NavBar handleSearch={handleSearch}/>
+            <NavBar handleSearch={handleSearch} crumbs={crumbs} selected={selected} />
             <h1 className="pageTitle">Drivers Championship</h1>
             <table className="driversTable">
                 <thead>

@@ -9,7 +9,7 @@ import TeamsFormula1Results from "./components/TeamsFormula1Results";
 import canonical from "../src/css/bootstrap.min.css"
 // import { SearchOutlined } from '@ant-design/icons';
 // import { HomeOutlined } from '@ant-design/icons';
-import NavBar from "./components/NavBar";
+
 
 
 const App = () => {
@@ -41,7 +41,6 @@ const App = () => {
                     </ul>
                 </div>
                  <div className="td2">
-                    {/* <NavBar/> */}
                     {/*<nav className="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
                         <div className="container-fluid">
                             <a className="navbar-brand" href="https://f1feederseries.com/">{<HomeOutlined />} F-1 Feeder</a>
