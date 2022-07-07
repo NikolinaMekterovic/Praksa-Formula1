@@ -9,7 +9,6 @@ const Drivers = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [crumbs, setCrumbs] = useState(["Drivers", "/"]);
 
     useEffect(() => {
         addDrivers()
@@ -27,9 +26,9 @@ const Drivers = () => {
         setIsLoading(false);
     }
 
-    const selected = crumb => {
-        console.log(crumb);
-    }
+    // const selected = crumb => {
+    //     console.log(crumb);
+    // }
 
     const handleSearch = (textSearch) => {
         const driversNames = drivers.filter((item) => {
@@ -55,7 +54,7 @@ const Drivers = () => {
 
     return (
         <div>
-            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} selected={selected} />
+            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} />
             <h1 className="pageTitle">Drivers Championship</h1>
             <table className="driversTable">
                 <thead>

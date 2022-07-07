@@ -26,9 +26,9 @@ const Races = () => {
         setIsLoading(false)
     }
 
-    const selected = crumb => {
-        console.log(crumb);
-    }
+    // const selected = crumb => {
+    //     console.log(crumb);
+    // }
 
     const handleSearch = (textSearch) => {
         const racesName = racesDetails.filter((item) => {
@@ -53,7 +53,7 @@ const Races = () => {
 
     return (
         <div>
-            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} selected={selected}/>
+            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} />
             <h1 className="pageTitle">Race Calendar</h1>
             <table className="driversTable driversTableRaces">
                 <thead>

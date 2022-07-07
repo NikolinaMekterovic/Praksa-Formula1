@@ -11,7 +11,6 @@ const Teams = () => {
     const [flagsDetails, setFlags] = useState([]);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(true);
-    const [crumbs, setCrumbs] = useState(["Teams", "/teams"]);
 
     useEffect(() => {
         addTeams()
@@ -29,9 +28,9 @@ const Teams = () => {
         setIsLoading(false)
     }
 
-    const selected = crumb => {
-        console.log(crumb);
-    }
+    // const selected = crumb => {
+    //     console.log(crumb);
+    // }
 
     const handleSearch = (textSearch) => {
         const teamsNames = teamsDetails.filter((item) => {
@@ -52,7 +51,7 @@ const Teams = () => {
 
     return (
         <div className="tabeleContainer">
-            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} selected={selected} />
+            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} />
             <h1 className="pageTitle">Constructors Championship</h1>
             <table className="driversTable">
                 <thead>

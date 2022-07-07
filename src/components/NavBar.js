@@ -14,21 +14,20 @@ const NavBar = (props) => {
     }
 
     const isLast = (index) => {
-        return index === props.crumbs.length - 1;
+        return index === props.breadCrumb.length - 1;
     }
 
     return (
         <div className="navContainer">
             <a href="https://f1feederseries.com/" target="_blank" className="navFeederHome">{<HomeOutlined />} F-1 Feeder</a>
-    
-
             <nav className="top-nav">
                 <ul className="breadcrumb">
                     {/* <Link to="/">Home</Link> */}
                     {props.breadCrumb.map((crumb, i) => {
+                        const disabled = isLast(i) ? "disabled" : "";
                         return (
                             <li key={i}>
-                                <Link to={crumb.url}>{crumb.title}</Link>
+                                <Link to={crumb.url} className={`disabledClass ${ disabled }`}>{crumb.title}  </Link>
                             </li>
                         );
                     })
