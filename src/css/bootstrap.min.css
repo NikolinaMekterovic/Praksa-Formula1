@@ -320,7 +320,7 @@ kbd {
 
 kbd kbd {
     padding: 0;
-    font-size: 1em;
+    font-size: 2em;
     font-weight: 700
 }
 
@@ -3752,7 +3752,7 @@ fieldset:disabled .btn {
 
 .btn-outline-warning {
     color: #ffc107;
-    border-color: #ffc107
+    border-color: black
 }
 
 .btn-outline-warning:hover {
@@ -3773,7 +3773,7 @@ fieldset:disabled .btn {
 .btn-outline-warning:active {
     color: #000;
     background-color: #ffc107;
-    border-color: #ffc107
+    border-color: black
 }
 
 .btn-check:active+.btn-outline-warning:focus,
@@ -5105,8 +5105,7 @@ fieldset:disabled .btn {
 
 .navbar-dark .navbar-nav .nav-link.active,
 .navbar-dark .navbar-nav .show>.nav-link {
-    color: #fff;
-    border-radius: 7px
+    color: #fff
 }
 
 .navbar-dark .navbar-toggler {

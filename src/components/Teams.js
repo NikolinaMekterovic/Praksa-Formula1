@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import NavBar from "./NavBar";
+import SearchBar from "./SearchBar";
 
 const Teams = () => {
     const [teamsDetails, setTeams] = useState([]);
@@ -30,10 +31,6 @@ const Teams = () => {
         setIsLoading(false)
     }
 
-    // const selected = crumb => {
-    //     console.log(crumb);
-    // }
-
     const handleSearch = (textSearch) => {
         const teamsNames = results.filter((item) => {
             return item.Constructor.name.indexOf(textSearch) !== -1
@@ -49,11 +46,12 @@ const Teams = () => {
         return (<Loader size={70} color="green" />)
     }
 
-    const breadCrumb = [{title:"Teams", url:"/teams"}];
+    const breadCrumb = [{title:"Teams", url:""}];
 
     return (
         <div>
-            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} />
+            <div className="searchButton"><SearchBar handleSearch={handleSearch} /></div>
+            <div className="navContainer"><NavBar breadCrumb={breadCrumb} /></div>
                 <div className="tabeleContainer">
                     <h1 className="pageTitle">Constructors Championship</h1>
                     <table className="driversTable">

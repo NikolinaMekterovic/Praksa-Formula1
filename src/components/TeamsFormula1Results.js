@@ -80,96 +80,96 @@ const TeamsFormula1Results = () => {
         return (<Loader size={70} color="green" />)
     }
 
-    const breadCrumb = [{title: "Teams", url:"/teams"},
-                    {title: formulaDetails[0].Constructor.name, url:"/teamsForumla1Results"}
-                ]
+    const breadCrumb = [{ title: "Teams", url: "/teams" },
+    { title: formulaDetails[0].Constructor.name, url: "" }
+    ]
 
     return (
         <div>
-             <NavBar breadCrumb={breadCrumb}/>
-        <div className="divDetails">
-            <div className="leftSide">
-                {formulaDetails.map((item, i) => {
-                    return (
-                        <div>
-                            <div key={i}>
-                                <div className="podaci">
-                                    <div className="data1">
-                                        <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgTeams" />
+            <div className="navContainer"><NavBar breadCrumb={breadCrumb} /></div>
+            <div className="divDetails">
+                <div className="leftSide">
+                    {formulaDetails.map((item, i) => {
+                        return (
+                            <div>
+                                <div key={i}>
+                                    <div className="podaci">
+                                        <div className="data1">
+                                            <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgTeams" />
+                                        </div>
+                                        <div className="flag data2">
+                                            <p>{flagsDetails.map((flag, i) => {
+                                                if (item.Constructor.nationality === flag.nationality) {
+                                                    return (<Flag key={i} country={flag.alpha_2_code} />)
+                                                } else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
+                                                    return (<Flag key={i} country="GB" />)
+                                                }
+                                            })}
+                                            </p>
+                                            <p>{item.Constructor.name}</p>
+                                        </div>
                                     </div>
-                                    <div className="flag data2">
-                                        <p>{flagsDetails.map((flag, i) => {
-                                            if (item.Constructor.nationality === flag.nationality) {
-                                                return (<Flag key={i} country={flag.alpha_2_code} />)
-                                            } else if (item.Constructor.nationality === "British" && flag.nationality === "British, UK") {
-                                                return (<Flag key={i} country="GB" />)
-                                            }
-                                        })}
-                                        </p>
-                                        <p>{item.Constructor.name}</p>
-                                    </div>
-                                </div>
-                                <div className="podaci">
-                                    <div className="data3">
-                                        <p>Country:</p>
-                                        <p>Position:</p>
-                                        <p>Points:</p>
-                                        <p>History:</p>
-                                    </div>
-                                    <div className="data4">
-                                        <p>{item.Constructor.nationality}</p>
-                                        <p>{item.position}</p>
-                                        <p>{item.points}</p>
-                                        <p><a href={item.Constructor.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></p>
+                                    <div className="podaci">
+                                        <div className="data3">
+                                            <p>Country:</p>
+                                            <p>Position:</p>
+                                            <p>Points:</p>
+                                            <p>History:</p>
+                                        </div>
+                                        <div className="data4">
+                                            <p>{item.Constructor.nationality}</p>
+                                            <p>{item.position}</p>
+                                            <p>{item.points}</p>
+                                            <p><a href={item.Constructor.url} target="_blank" className="iconDet"><FontAwesomeIcon icon={faArrowUpRightFromSquare} /></a></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
+                </div>
+                <table className="driversTable">
+                    <thead>
+                        <tr>
+                            <td colSpan={5} className="subTitle">Formula 1  2013 Results</td>
+                        </tr>
+                        <tr>
+                            <th>Round</th>
+                            <th>Grand Prix</th>
+                            <th>{formulaResults[0].Results[0].Driver.familyName}</th>
+                            <th>{formulaResults[0].Results[1].Driver.familyName}</th>
+                            <th>Points</th>
+                        </tr>
+                    </thead>
+                    {formulaResults.map((item, i) => {
+                        return (
+                            <tbody>
+                                <tr key={i}>
+                                    <td>{item.round}</td>
+                                    <td>
+                                        {flagsDetails.map((flag, i) => {
+                                            if (item.Circuit.Location.country === flag.en_short_name) {
+                                                return (<Flag key={i} country={flag.alpha_2_code} />)
+                                            } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
+                                                return (<Flag key={i} country="GB" />)
+                                            } else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
+                                                return (<Flag key={i} country="US" />)
+                                            } else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
+                                                return (<Flag key={i} country="KR" />)
+                                            } else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
+                                                return (<Flag key={i} country="AE" />)
+                                            }
+                                        })}
+                                        {<span></span>}{item.raceName}</td>
+                                    <td style={{ "backgroundColor": setColor(item.Results[0].position) }}>{item.Results[0].position}</td>
+                                    <td style={{ "backgroundColor": setColor(item.Results[1].position) }}>{item.Results[1].position}</td>
+                                    <td>{parseInt(item.Results[0].points) + parseInt(item.Results[1].points)}</td>
+                                </tr>
+                            </tbody>
+                        );
+                    })}
+                </table>
             </div>
-            <table className="driversTable">
-                <thead>
-                    <tr>
-                        <td colSpan={5} className="subTitle">Formula 1  2013 Results</td>
-                    </tr>
-                    <tr>
-                        <th>Round</th>
-                        <th>Grand Prix</th>
-                        <th>{formulaResults[0].Results[0].Driver.familyName}</th>
-                        <th>{formulaResults[0].Results[1].Driver.familyName}</th>
-                        <th>Points</th>
-                    </tr>
-                </thead>
-                {formulaResults.map((item, i) => {
-                    return (
-                        <tbody>
-                            <tr key={i}>
-                                <td>{item.round}</td>
-                                <td>
-                                    {flagsDetails.map((flag, i) => {
-                                        if (item.Circuit.Location.country === flag.en_short_name) {
-                                            return (<Flag key={i} country={flag.alpha_2_code} />)
-                                        } else if (item.Circuit.Location.country === "UK" && flag.en_short_name === "United Kingdom of Great Britain and Northern Ireland") {
-                                            return (<Flag key={i} country="GB" />)
-                                        } else if (item.Circuit.Location.country === "USA" && flag.en_short_name === "United States of America") {
-                                            return (<Flag key={i} country="US" />)
-                                        } else if (item.Circuit.Location.country === "Korea" && flag.en_short_name === "Korea (Democratic People's Republic of)") {
-                                            return (<Flag key={i} country="KR" />)
-                                        } else if (item.Circuit.Location.country === "UAE" && flag.en_short_name === "United Arab Emirates") {
-                                            return (<Flag key={i} country="AE" />)
-                                        }
-                                    })}
-                                    {<span></span>}{item.raceName}</td>
-                                <td style={{ "backgroundColor": setColor(item.Results[0].position) }}>{item.Results[0].position}</td>
-                                <td style={{ "backgroundColor": setColor(item.Results[1].position) }}>{item.Results[1].position}</td>
-                                <td>{parseInt(item.Results[0].points) + parseInt(item.Results[1].points)}</td>
-                            </tr>
-                        </tbody>
-                    );
-                })}
-            </table>
-        </div>
         </div>
     );
 }

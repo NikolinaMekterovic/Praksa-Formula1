@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Flag from "react-flagkit";
 import Loader from "./Loader";
 import NavBar from "./NavBar";
+import SearchBar from "./SearchBar";
 
 const Drivers = () => {
     const [drivers, setDrivers] = useState([]);
@@ -28,16 +29,12 @@ const Drivers = () => {
         setIsLoading(false);
     }
 
-    // const selected = crumb => {
-    //     console.log(crumb);
-    // }
-
     const handleSearch = (textSearch) => {
         const driversNames = results.filter((item) => {
-            return item.Driver.givenName.indexOf(textSearch) !== -1 
-            || item.Driver.familyName.indexOf(textSearch) !== -1 
-            || item.Driver.givenName.toLowerCase().indexOf(textSearch) !== -1
-            || item.Driver.familyName.toLowerCase().indexOf(textSearch) !== -1
+            return item.Driver.givenName.includes(textSearch) 
+            || item.Driver.familyName.includes(textSearch) 
+            || item.Driver.givenName.toLowerCase().includes(textSearch)
+            || item.Driver.familyName.toLowerCase().includes(textSearch)
         });
         setDrivers(driversNames);
     }
@@ -50,11 +47,12 @@ const Drivers = () => {
         return (<Loader />)
     }
 
-    const breadCrumb = [{title:"Drivers", url:"/"}];
-
+    const breadCrumb = [{ title: "Drivers", url: "" }];
+    
     return (
         <div>
-            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} />
+            <div className="searchButton"><SearchBar handleSearch={handleSearch} /></div>
+            <div className="navContainer"><NavBar breadCrumb={breadCrumb} /></div>
             <h1 className="pageTitle">Drivers Championship</h1>
             <table className="driversTable">
                 <thead>

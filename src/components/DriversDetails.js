@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import NavBar from "./NavBar";
 
-
 const DriversDetails = () => {
     const [details, setDetails] = useState([]);
     const [races, setRaces] = useState([]);
@@ -80,12 +79,11 @@ const DriversDetails = () => {
     }
 
     const breadCrumb = [{title: "Drivers", url:"/"},
-                    {title: details[0].Driver.givenName + " " + details[0].Driver.familyName, url:"/driverDetails"}
+                    {title: details[0].Driver.givenName + " " + details[0].Driver.familyName, url:""}
                 ]
-    
     return (
         <div>
-            <NavBar breadCrumb={breadCrumb}/>
+            <div className="navContainer"><NavBar breadCrumb={breadCrumb}/></div>
             <div className="divDetails">
                 <div className="leftSide">
                     {details.map(driver => {

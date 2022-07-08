@@ -1,59 +1,68 @@
 import React from "react";
-import { useState } from "react";
 import { HomeOutlined } from '@ant-design/icons';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { nodeName } from "jquery";
 
 const NavBar = (props) => {
 
-    const [inputText, setInputText] = useState("");
-
-
-    // const handleSearchDetails = () => {
-    //     props.handleSearch(inputText);
-    //     setInputText("");
-    // }
-
-    const isLast = (index) => {
-        return index === props.breadCrumb.length - 1;
-    }
-    const handleChangeInputValue = (e) => {
-        setInputText(e.target.value);
-        props.handleSearch(inputText);
-    }
-
     return (
-        <div className="navContainer">
+        <div className="navBarDetails">
             <a href="https://f1feederseries.com/" target="_blank" className="navFeederHome">{<HomeOutlined />} F-1 Feeder</a>
             <nav className="top-nav">
-                <ul className="breadcrumb">
-                    {/* <Link to="/">Home</Link> */}
+                <ul className="breadcrumb navDetails">
                     {props.breadCrumb.map((crumb, i) => {
-                        const disabled = isLast(i) ? "disabled" : "";
-                        return (
-                            <li key={i}>
-                                <Link to={crumb.url} className={`disabledClass ${ disabled }`}>{crumb.title}  </Link>
-                            </li>
-                        );
-                    })
-                    }
+                        if (crumb.url.length == 0) {
+                            return (
+                                <div key={i}>
+                                    <li>
+                                        <button
+                                            disabled
+                                            style={{
+                                                textDecoration: "none",
+                                                borderRadius: "7px",
+                                                backgroundColor: "blue",
+                                                border: "none",
+                                                marginLeft: "5px",
+                                                marginTop: "5px",
+                                            }}
+                                        >
+                                            <Link to={crumb.url}>{crumb.title}</Link>
+                                        </button>
+                                    </li>
+                                </div>
+                            );
+                        } else {
+                            return (
+                                <div key={i}>
+                                    <li>
+                                        <button
+                                            style={{
+                                                backgroundColor: "grey",
+                                                border: "none",
+                                                borderRadius: "7px",
+                                                marginLeft: "5px",
+                                                marginTop: "5px",
+                                            }}
+                                        >
+                                            <Link to={crumb.url}>{crumb.title}</Link>
+                                        </button>
+                                    </li>
+                                </div>
+                            );
+                        }
+                    })}
                 </ul>
             </nav>
-            <div>
-                <label htmlFor="search-form">
-                    <input
-                        type="search"
-                        name="search-form"
-                        id="search-form"
-                        className="searchInput"
-                        placeholder="Search..."
-                        value={inputText}
-                        onChange={handleChangeInputValue} />
-                    {/* <input type="button" value="Click" onClick={() => handleSearchDetails(inputText)} /> */}
-                </label>
-            </div>
-
         </div>
     )
 }
 
 export default NavBar;
+
+/*
+// return (
+                        //     <li key={i}>
+                        //         <button disabled={crumb.url === 0}> <Link to={crumb.url} > {crumb.title} </Link></button>
+                        //     </li>
+                        // );
+*/

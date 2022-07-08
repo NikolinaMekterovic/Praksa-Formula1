@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Flag from 'react-flagkit';
 import Loader from "./Loader";
 import NavBar from "./NavBar";
+import SearchBar from "./SearchBar";
 
 const Races = () => {
     const [racesDetails, setRaces] = useState([]);
@@ -28,54 +29,31 @@ const Races = () => {
         setIsLoading(false)
     }
 
-    // const selected = crumb => {
-    //     console.log(crumb);
-    // }
-
     const handleSearch = (textSearch) => {
         const racesNames = results.filter((item) => {
             return item.raceName.indexOf(textSearch) !== -1
-            || item.raceName.toLowerCase().indexOf(textSearch) !== -1
-            || item.Circuit.circuitName.indexOf(textSearch) !== -1
-            || item.Circuit.circuitName.toLowerCase().indexOf(textSearch) !== -1
+                || item.raceName.toLowerCase().indexOf(textSearch) !== -1
+                || item.Circuit.circuitName.indexOf(textSearch) !== -1
+                || item.Circuit.circuitName.toLowerCase().indexOf(textSearch) !== -1
         });
         setRaces(racesNames);
     }
-
-
-    // const handleSearch = (textSearch) => {
-    //     if (textSearch === "") {
-    //         return setRacesNew(racesDetailsNew)
-    //     } else {
-    //         const racesName = racesDetails.filter(
-    //             (item) =>
-    //                 item.raceName
-    //                     .toLowerCase()
-    //                     .includes(textSearch.toLowerCase()) ||
-    //                 item.Circuit.circuitName
-    //                     .toLowerCase()
-    //                     .includes(textSearch.toLowerCase()) 
-    //        )
-    //        setRaces(racesName)
-           
-    //     } 
-    //     console.log("racesDetails", racesDetails)
-    // }
 
     const handleClickDetails = (circuitId) => {
         navigate("/racesGrandPrix", { state: { circuitId: circuitId } });
     }
 
-    
+
     if (isLoading) {
         return (<Loader size={70} color="green" />)
     }
-    
-    const breadCrumb = [{title:"Races", url:"/races"}];
+
+    const breadCrumb = [{ title: "Races", url: "" }];
 
     return (
         <div>
-            <NavBar handleSearch={handleSearch} breadCrumb={breadCrumb} />
+            <div className="searchButton"><SearchBar handleSearch={handleSearch} /></div>
+            <div className="navContainer"><NavBar breadCrumb={breadCrumb} /></div>
             <h1 className="pageTitle">Race Calendar</h1>
             <table className="driversTable driversTableRaces">
                 <thead>

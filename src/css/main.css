@@ -1,372 +1,3 @@
-/*
-
-* {
-    margin: 0px;
-    padding: 0px;
-}
-
-
-.navbar-brand {
-    background-color: rgb(60 60 60);
-    padding: 5px 10px;
-    border-radius: 7px;
-
-}
-
-.anticon {
-    vertical-align: 0.135em;
-}
-
-.me-2 {
-    background-color: rgb(83, 82, 82);
-    border: 0px;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.btn-outline-success {
-    border: 1px solid black;
-    color: white;
-    padding: 0px;
-    font-size: 30px;
-}
-
-.navBtn {
-    min-width: 150px;
-    font-size: 45px;
-    font-family: magneto;
-    cursor: pointer;
-    background-color: blue;
-    text-align: center;
-}
-
-.nav-link {
-    background-color: blue;
-}
-
-.nav-link2 {
-    background-color: blue;
-    border-radius: 7px;
-    padding: 11.5px 10px;
-    color: white;
-    text-decoration: none;
-}
-.appContainer {
-    display: flex;
-    width: 100%;
-    background-color: gray;
-}
-
-
-.appContainer ul {
-    display: block;
-    list-style: none;
-    padding: 0px;
-    margin: 0;
-}
-
-.lnk {
-    display: block;
-    background-color: rgb(41, 41, 41);
-    text-decoration: none;
-    color: white;
-    padding: 0px;
-    margin: 0px;
-}
-
-.lnk:hover {
-    background-color: #fcb900;
-    color: black;
-}
-
-.lnk:active {
-    background-color: black;
-}
-
-.tableContainer {
-    background-color: gray;
-}
-
-.driversTable {
-    margin: 0;
-    border: 20px solid grey;
-    border-collapse: collapse;
-    text-align: left;
-    width: 100%;
-    height: 100vh;
-    overflow-x: auto;
-}
-
-.pageTitle {
-    background-color: gray;
-    margin: 0;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 40px;
-    font-family: magneto;
-    color: white;
-    text-shadow: 0 0 40px black;
-    padding: 20px 20px 0px 20px;
-}
-
-th {
-    text-align: left;
-    background-color: rgb(220, 220, 220);
-    color: black;
-    padding: 10px;
-}
-
-tr {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    border: 1px solid gray;
-    background-color: white;
-    color: rgb(80, 80, 80);
-}
-
-td {
-    border: 1px solid  rgb(80, 80, 80);
-    padding: 10px;
-}
-
-.td1 {
-    background-color: rgb(41, 41, 41);
-    vertical-align: top;
-    padding: 0;
-}
-
-.td2 {
-    width: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    background-color: rgb(41, 41, 41);
-    color: rgb(80, 80, 80);
-}
-
-.tdr {
-    padding-left: 7px;
-    text-decoration: none;
-}
-
-.subTitle {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    border: 1px solid gray;
-    background-color: rgb(220, 220, 220);
-    color: rgb(80, 80, 80);
-}
-
-.loaderClass {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.divDetails {
-    display: flex;
-    width: 100%;
-}
-
-.leftSide,
-.doubleTable {
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 15px;
-}
-
-.doubleTable {
-    width: 100%;
-    padding: 0;
-}
-
-.leftSide {
-    width: 350px;
-    color: white;
-}
-
-
-.both {
-    width: 100%;
-    display: flex;
-    background-color: gray;
-}
-
-.middle {
-    margin: 10px;
-    flex-grow: 3;
-}
-
-.rightSide {
-    margin: 10px;
-    flex-grow: 4;
-}
-
-.imgFlag {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-}
-
-.imgDetails,
-.flag {
-    flex-direction: column;
-}
-
-.imgDetails {
-    width: 150px;
-    border-radius: 10px;
-}
-
-.imgDrivers,
-.flag {
-    flex-direction: column;
-}
-
-.imgDrivers,
-.imgTeams {
-    width: 150px;
-    border-radius: 10px;
-}
-
-.icon {
-    text-decoration: none;
-    color: grey;
-}
-
-.iconDet {
-    text-decoration: none;
-    color: white;
-}
-
-.flag {
-    padding: 15px;
-}
-
-.podaci {
-    display: flex;
-    width: 100%;
-}
-
-.data1 {
-    padding: 10px;
-}
-
-.data2 {
-    padding: 10px;
-}
-
-.data3 {
-    width: 60%;
-    padding: 10px;
-}
-
-.data4 {
-    padding: 10px;
-}
-
-.podaci2 {
-    display: flex;
-    width: 350px;
-}
-
-img[Attributes] {
-    height: 70px;
-    aspect-ratio: auto 70 / 70;
-    width: 70px;
-}
-
-.data5 {
-    width: 50%;
-    padding: 10px;
-}
-
-span {
-    padding: 0 0 0 10px;
-}
-
-@media only screen and (min-width: 481px) and (max-width: 876px) {
-
-    .appContainer {
-        flex-direction: column;
-    }
-
-    .appContainer {
-        width: 100%;
-        padding: 0;
-    }
-
-    .navBtn {
-        min-width: 150px;
-        margin: 0 auto;
-        font-size: 45px;
-        font-family: magneto;
-        cursor: pointer;
-    }
-
-    .f1Feeder img {
-        width: 100%;
-    }
-
-    .lnk {
-        display: block;
-    }
-
-    .pageTitle {
-        text-align: center;
-    }
-    .both{
-        flex-wrap: wrap;
-    }
-}
-
-
-@media screen and (max-width: 480px) {
-    .appContainer {
-        flex-direction: column;
-    }
-
-    .appContainer {
-        width: 100%;
-        padding: 0;
-    }
-
-    .navBtn {
-        min-width: 150px;
-        margin: 0 auto;
-        font-size: 45px;
-        font-family: magneto;
-        cursor: pointer;
-    }
-
-    .f1Feeder img {
-        width: 100%;
-    }
-
-    .lnk {
-        font-size: 0;
-        text-align: center;
-    }
-
-    .pageTitle {
-        text-align: center;
-        font-size: 30px;
-    }
-    .both{
-        flex-wrap: wrap;
-    }
-    .divDetails{
-        flex-wrap: wrap;
-    }
-    .driversTableRaces{
-        font-size: 13px;
-    }
-    .data1{
-        text-align: center;
-    }
-}
-*/
-
 * {
     margin: 0px;
     padding: 0px;
@@ -375,6 +6,79 @@ span {
 body {
     background-color: rgb (41, 41, 41);
 }
+
+
+/* ----------------------------------------------------------------- */
+
+.navContainer {
+    display: block;
+    width: 100%;
+}
+
+.navBarDetails {
+display: flex;
+}
+
+.searchBarStyle{
+    float: right;
+}
+
+.navFeederHome {
+    min-width: 140px;
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px 2px 5px;
+}
+
+.navFeederHome:hover {
+    background-color: #fcb900;
+    color: black;
+}
+
+.top-nav {
+    /* display: flex; */
+    padding: 5px 10px 2px 5px;
+    width: 350px;
+}
+
+.disabledClass {
+    display: flex;
+}
+
+.breadcrumb.navDetails {    
+    display: flex;
+    min-width: 350px;
+    width: max-content;
+    padding: 0px 10px 0px 0px;
+}
+
+.navDetails {
+    display: flex;
+    padding: 0px 10px;
+}
+
+.disabledClass {
+    padding: 0px 10px 0px 0px;
+}
+
+
+.divSearch {
+    width: 100%;
+    text-align: end;
+}
+
+.f1Feeder {
+    text-align: center;
+}
+
+.logo {
+    width: 400px;
+    height: 400px;
+}
+
+
+/* ------------------------------------------------------------------- */
+
 
 .navbar-brand {
     background-color: rgb(60 60 60);
@@ -483,7 +187,7 @@ body {
     border-collapse: collapse;
     text-align: left;
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .pageTitle {
@@ -680,9 +384,11 @@ span {
 }
 
 @media only screen and (max-width: 1750px) {
+
+    /* Ovde se dve tabele iz "Race Calendar" prebacuju ispod navigacije i detalja */
     .divDetails {
         flex-direction: column;
-        width: 100%;
+        /* width: 100%; */
         background-color: rgb(41, 41, 41);
     }
 
@@ -693,6 +399,13 @@ span {
         height: 100%;
         background-color: rgb(41, 41, 41);
     }
+
+    /* .appTableContainer ul {
+        display: block;
+        list-style: none;
+        padding: 0px;
+        margin: 0;
+    } */
 }
 
 @media only screen and (min-width: 1360px) and (max-width: 1750px) {
@@ -714,6 +427,13 @@ span {
         height: 100%;
         background-color: rgb(41, 41, 41);
     }
+
+    /* .appTableContainer ul {
+        display: block;
+        list-style: none;
+        padding: 0px;
+        margin: 0;
+    } */
 
     .both {
         flex-wrap: wrap;
@@ -738,6 +458,13 @@ span {
         height: 100%;
         background-color: rgb(41, 41, 41);
     }
+
+    /* .appTableContainer ul {
+        display: block;
+        list-style: none;
+        padding: 0px;
+        margin: 0;
+    } */
 
     .navbar-expand-md {
         flex-wrap: wrap;
@@ -764,7 +491,7 @@ span {
     }
 
     .appContainer {
-        flex-direction: column; 
+        /* flex-direction: column; */
         flex-wrap: wrap;
         width: 100%;
         padding: 0;
@@ -773,6 +500,7 @@ span {
     .center {
         text-align: center;
     }
+
     .both {
         flex-wrap: wrap;
     }
