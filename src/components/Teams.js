@@ -65,7 +65,7 @@ const Teams = () => {
                                 return (
                                     <tr key={item.Constructor.constructorId}>
                                         <td className="tdr">{item.position}</td>
-                                        <td className="tdr" onClick={() => { handleClickDetails(item.Constructor.constructorId) }}>
+                                        <td className="tdr clickTable" onClick={() => { handleClickDetails(item.Constructor.constructorId) }}>
                                             {flagsDetails.map((flag, i) => {
                                                 if (item.Constructor.nationality === flag.nationality) {
                                                     return <Flag key={i} country={flag.alpha_2_code} />

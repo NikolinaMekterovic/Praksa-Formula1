@@ -19,11 +19,12 @@ const NavBar = (props) => {
                                             disabled
                                             style={{
                                                 textDecoration: "none",
-                                                borderRadius: "7px",
                                                 backgroundColor: "blue",
                                                 border: "none",
+                                                borderRadius: "7px",
+                                                padding: "5px 10px 5px 10px",
+                                                fontWeight: "600",
                                                 marginLeft: "5px",
-                                                marginTop: "5px",
                                             }}
                                         >
                                             <Link to={crumb.url}>{crumb.title}</Link>
@@ -37,11 +38,13 @@ const NavBar = (props) => {
                                     <li>
                                         <button
                                             style={{
-                                                backgroundColor: "grey",
+                                                backgroundColor: "rgb(68, 68, 68)",
                                                 border: "none",
                                                 borderRadius: "7px",
+                                                padding: "5px 10px 5px 10px",
+                                                fontWeight: "600",
                                                 marginLeft: "5px",
-                                                marginTop: "5px",
+                                                // marginTop: "5px",
                                             }}
                                         >
                                             <Link to={crumb.url}>{crumb.title}</Link>

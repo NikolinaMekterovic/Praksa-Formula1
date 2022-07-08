@@ -65,7 +65,7 @@ const Drivers = () => {
                         return (
                             <tr key={item.position}>
                                 <td className="tdr">{item.position}</td>
-                                <td className="tdr" onClick={() => { handleClickDetails(item.Driver.driverId) }}>
+                                <td className="tdr clickTable" onClick={() => { handleClickDetails(item.Driver.driverId) }}>
                                     {flagsDetails.map((flag, i) => {
                                         if (item.Driver.nationality === flag.nationality) {
                                             return <Flag key={i} country={flag.alpha_2_code} />

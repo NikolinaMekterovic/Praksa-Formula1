@@ -24,10 +24,13 @@ display: flex;
 }
 
 .navFeederHome {
+    background-color: rgb(68, 68, 68);
     min-width: 140px;
     color: white;
     text-decoration: none;
     padding: 5px 10px 2px 5px;
+    border-radius: 7px;
+    margin-top : 5px;
 }
 
 .navFeederHome:hover {
@@ -74,6 +77,7 @@ display: flex;
 .logo {
     width: 400px;
     height: 400px;
+    border-radius: 20px;
 }
 
 
@@ -112,7 +116,7 @@ display: flex;
 
 .navBtn {
     min-width: 150px;
-    font-size: 35px;
+    font-size: 30px;
     font-family: magneto;
     cursor: pointer;
 }
@@ -165,7 +169,7 @@ display: flex;
 }
 
 .lnk:focus {
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0.536);
 }
 
 .navbar-brand:hover {
@@ -195,7 +199,7 @@ display: flex;
     margin: 0;
     font-weight: bold;
     font-style: italic;
-    font-size: 40px;
+    font-size: 30px;
     font-family: magneto;
     color: white;
     text-shadow: 0 0 40px black;
@@ -504,4 +508,12 @@ span {
     .both {
         flex-wrap: wrap;
     }
+}
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}
+.clickTable{
+    cursor: pointer;
 }

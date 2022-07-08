@@ -73,7 +73,7 @@ const Races = () => {
                         return (
                             <tr key={item.Circuit.circuitId}>
                                 <td>{item.round}</td>
-                                <td onClick={() => { handleClickDetails(item.round) }}>
+                                <td className="clickTable" onClick={() => { handleClickDetails(item.round) }}>
                                     {flagsDetails.map((flag, i) => {
                                         if (item.Circuit.Location.country === flag.en_short_name) {
                                             return <Flag key={i} country={flag.alpha_2_code} />
