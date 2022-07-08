@@ -21,6 +21,8 @@ display: flex;
 
 .searchBarStyle{
     float: right;
+    margin-top: 7px;
+    margin-right: 5px;
 }
 
 .navFeederHome {
@@ -509,11 +511,13 @@ span {
         flex-wrap: wrap;
     }
 }
+
 a {
     text-decoration: none;
     font-weight: bold;
     color: white;
 }
+
 .clickTable{
     cursor: pointer;
 }
