@@ -68,7 +68,7 @@ const GrandPrix = () => {
     }
 
     if (isLoading) {
-        return (<Loader size={70} color="green" />)
+        return (<Loader />)
     }
 
     const breadCrumb = [{ title: "Races", url: "/races" },
@@ -83,7 +83,7 @@ const GrandPrix = () => {
                     {grandPrix.map(item => {
                         return (
                             <div key={item.Circuit.circuitId}>
-                                <div className="podaci2">
+                                <div className="dataB">
                                     {flagsDetails.map((flag, i) => {
                                         if (item.Circuit.Location.country === flag.en_short_name) {
                                             return <Flag key={i} country={flag.alpha_2_code} />
@@ -101,7 +101,7 @@ const GrandPrix = () => {
                                 <div>
                                     <h3>{item.raceName}</h3>
                                 </div>
-                                <div className="podaci">
+                                <div className="dataA">
                                     <div className="data5">
                                         <p>Country:</p>
                                         <p>Location:</p>

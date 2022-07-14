@@ -43,9 +43,8 @@ const Races = () => {
         navigate("/racesGrandPrix", { state: { circuitId: circuitId } });
     }
 
-
     if (isLoading) {
-        return (<Loader size={70} color="green" />)
+        return (<Loader />)
     }
 
     const breadCrumb = [{ title: "Races", url: "" }];

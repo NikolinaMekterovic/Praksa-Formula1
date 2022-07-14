@@ -24,11 +24,8 @@ const SearchBar = (props) => {
                   onChange={handleChangeInputValue} />
             </label>
          </div>
-      </div>)
-
+      </div>
+   )
 }
-
-
-
 
 export default SearchBar;

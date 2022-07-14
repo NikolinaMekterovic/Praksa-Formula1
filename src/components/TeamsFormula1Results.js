@@ -6,7 +6,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import NavBar from "./NavBar";
 
-
 const TeamsFormula1Results = () => {
     const [formulaDetails, setformulaDetails] = useState([]);
     const [formulaResults, setFormulaResults] = useState([]);
@@ -33,7 +32,6 @@ const TeamsFormula1Results = () => {
         setFormulaResults(resultsX.MRData.RaceTable.Races);
         setFlags(flagsX);
         setIsLoading(false);
-        console.warn(detailsX.MRData.StandingsTable.StandingsLists[0].ConstructorStandings.Constructor)
     }
 
     const setColor = (position) => {
@@ -77,7 +75,7 @@ const TeamsFormula1Results = () => {
     }
 
     if (isLoading) {
-        return (<Loader size={70} color="green" />)
+        return (<Loader />)
     }
 
     const breadCrumb = [{ title: "Teams", url: "/teams" },
@@ -93,7 +91,7 @@ const TeamsFormula1Results = () => {
                         return (
                             <div>
                                 <div key={i}>
-                                    <div className="podaci">
+                                    <div className="dataA">
                                         <div className="data1">
                                             <img src={require(`./../img/teams/${item.Constructor.constructorId}.png`).default} className="imgTeams" />
                                         </div>
@@ -109,7 +107,7 @@ const TeamsFormula1Results = () => {
                                             <p>{item.Constructor.name}</p>
                                         </div>
                                     </div>
-                                    <div className="podaci">
+                                    <div className="dataA">
                                         <div className="data3">
                                             <p>Country:</p>
                                             <p>Position:</p>
@@ -131,7 +129,7 @@ const TeamsFormula1Results = () => {
                 <table className="driversTable">
                     <thead>
                         <tr>
-                            <td colSpan={5} className="subTitle">Formula 1  2013 Results</td>
+                            <td colSpan={5} className="subTitle">Formula 1 2013 Results</td>
                         </tr>
                         <tr>
                             <th>Round</th>

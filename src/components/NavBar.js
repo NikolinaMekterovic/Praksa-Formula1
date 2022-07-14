@@ -25,8 +25,7 @@ const NavBar = (props) => {
                                                 padding: "5px 10px 5px 10px",
                                                 fontWeight: "600",
                                                 marginLeft: "5px",
-                                            }}
-                                        >
+                                            }} >
                                             <Link to={crumb.url}>{crumb.title}</Link>
                                         </button>
                                     </li>
@@ -44,9 +43,7 @@ const NavBar = (props) => {
                                                 padding: "5px 10px 5px 10px",
                                                 fontWeight: "600",
                                                 marginLeft: "5px",
-                                                // marginTop: "5px",
-                                            }}
-                                        >
+                                            }} >
                                             <Link to={crumb.url}>{crumb.title}</Link>
                                         </button>
                                     </li>
@@ -61,11 +58,3 @@ const NavBar = (props) => {
 }
 
 export default NavBar;
-
-/*
-// return (
-                        //     <li key={i}>
-                        //         <button disabled={crumb.url === 0}> <Link to={crumb.url} > {crumb.title} </Link></button>
-                        //     </li>
-                        // );
-*/

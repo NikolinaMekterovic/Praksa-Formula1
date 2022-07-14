@@ -75,7 +75,7 @@ const DriversDetails = () => {
     }
 
     if (isLoading) {
-        return (<Loader size={70} color="green" />)
+        return (<Loader />)
     }
 
     const breadCrumb = [{title: "Drivers", url:"/"},
@@ -107,7 +107,7 @@ const DriversDetails = () => {
                                         <p>{driver.Driver.familyName}</p>
                                     </div>
                                 </div>
-                                <div className="podaci">
+                                <div className="dataA">
                                     <div className="data3">
                                         <p>Country:</p>
                                         <p>Team:</p>

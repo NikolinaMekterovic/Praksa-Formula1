@@ -41,7 +41,6 @@ display: flex;
 }
 
 .top-nav {
-    /* display: flex; */
     padding: 5px 10px 2px 5px;
     width: 350px;
 }
@@ -65,7 +64,6 @@ display: flex;
 .disabledClass {
     padding: 0px 10px 0px 0px;
 }
-
 
 .divSearch {
     width: 100%;
@@ -193,7 +191,6 @@ display: flex;
     border-collapse: collapse;
     text-align: left;
     width: 100%;
-    /* height: 100vh; */
 }
 
 .pageTitle {
@@ -344,7 +341,7 @@ td {
     padding: 15px;
 }
 
-.podaci {
+.dataA {
     display: flex;
     width: 100%;
 }
@@ -369,7 +366,7 @@ td {
     padding: 10px;
 }
 
-.podaci2 {
+.dataB {
     display: flex;
     width: 350px;
 }
@@ -391,10 +388,8 @@ span {
 
 @media only screen and (max-width: 1750px) {
 
-    /* Ovde se dve tabele iz "Race Calendar" prebacuju ispod navigacije i detalja */
     .divDetails {
         flex-direction: column;
-        /* width: 100%; */
         background-color: rgb(41, 41, 41);
     }
 
@@ -405,13 +400,6 @@ span {
         height: 100%;
         background-color: rgb(41, 41, 41);
     }
-
-    /* .appTableContainer ul {
-        display: block;
-        list-style: none;
-        padding: 0px;
-        margin: 0;
-    } */
 }
 
 @media only screen and (min-width: 1360px) and (max-width: 1750px) {
@@ -434,18 +422,10 @@ span {
         background-color: rgb(41, 41, 41);
     }
 
-    /* .appTableContainer ul {
-        display: block;
-        list-style: none;
-        padding: 0px;
-        margin: 0;
-    } */
-
     .both {
         flex-wrap: wrap;
     }
 }
-
 
 @media only screen and (min-width: 900px) and (max-width: 1360px) {
     .appContainer {
@@ -464,13 +444,6 @@ span {
         height: 100%;
         background-color: rgb(41, 41, 41);
     }
-
-    /* .appTableContainer ul {
-        display: block;
-        list-style: none;
-        padding: 0px;
-        margin: 0;
-    } */
 
     .navbar-expand-md {
         flex-wrap: wrap;
@@ -497,7 +470,6 @@ span {
     }
 
     .appContainer {
-        /* flex-direction: column; */
         flex-wrap: wrap;
         width: 100%;
         padding: 0;

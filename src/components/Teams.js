@@ -43,7 +43,7 @@ const Teams = () => {
         navigate("/teamsForumla1Results", { state: { constructorId: constructorId } });
     }
     if (isLoading) {
-        return (<Loader size={70} color="green" />)
+        return (<Loader />)
     }
 
     const breadCrumb = [{title:"Teams", url:""}];
